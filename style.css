@@ -11,19 +11,34 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgb(93,6,130);
     background: linear-gradient(45deg, #5d0682 0%, #008ca8 100%);
+}
+
+#tabuleiro-principal{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .caixa-grande {
     height: 250px;
     width: 250px;
     border: 5px solid #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#tabuleiroPrincipal{
+.sub-tabuleiro{
+    height: fit-content;
+    width: fit-content;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+}
+
+.caixa-pequena{
+    height: 67px;
+    width: 67px;
+    border: 3px solid #ffffff;
 }
 
 :nth-child(1) ,:nth-child(2) ,:nth-child(3){
