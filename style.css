@@ -12,6 +12,7 @@ body{
     align-items: center;
     justify-content: center;
     background: linear-gradient(45deg, #5d0682 0%, #008ca8 100%);
+    overflow: hidden;
 }
 
 #tabuleiro-principal{
