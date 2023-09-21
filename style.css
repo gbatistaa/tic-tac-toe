@@ -29,6 +29,16 @@ body{
     align-items: center;
 }
 
+.bloqueada{
+    height: 245px;
+    width: 245px;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    background-color: rgb(194, 46, 46);
+    opacity: 50%;
+}
+
 .sub-tabuleiro{
     height: fit-content;
     width: fit-content;
