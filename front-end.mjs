@@ -2,6 +2,7 @@
 const xSimbolo = document.createElement ('div');
 const oSimbolo = document.createElement ('div');
 const caixasPequenas = document.getElementsByClassName ('caixa-pequena');
+const regras = document.getElementById('ínfo');
 
 // Função recursiva para Adicionar simbolo x ou o na caixa pequena
 const adicionarEvento = (caixaP, index = 0) => { 
@@ -82,6 +83,7 @@ btInstrucao.addEventListener('click', () => {
 
 // "Ouve o evento click no botão de fechar"
 btFechar.addEventListener('click', () =>{
+    regras.scrollTo({top: 0});
     removerClasse('ativo')(principal);
     removerClasse('ativo')(info);
     btInstrucao.style.display = 'inline';
