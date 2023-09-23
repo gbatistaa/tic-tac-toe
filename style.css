@@ -47,9 +47,34 @@ body{
 }
 
 .caixa-pequena{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 67px;
     width: 67px;
     border: 3px solid #ffffff;
+}
+
+.X:hover::before{
+    position: absolute;
+    z-index: -2;
+    content: "";
+    width: 45px;
+    height: 45px;
+    background-color: black;
+    opacity: 30%;
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+}
+
+.O:hover::before{
+    position: absolute;
+    z-index: -2;
+    content: "";
+    width: 25px;
+    height: 25px;
+    opacity: 30%;
+    border: 10px black solid;
+    border-radius: 50%;
 }
 
 :nth-child(1) ,:nth-child(2) ,:nth-child(3){
