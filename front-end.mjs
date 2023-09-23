@@ -1,6 +1,8 @@
 // Atribuição de constantes dos elementos virtuais 
 const xSimbolo = document.createElement ('div');
 const oSimbolo = document.createElement ('div');
+const tabuleiro = document.getElementById('principal');
+
 const caixasPequenas = document.getElementsByClassName ('caixa-pequena');
 
 // Função recursiva para Adicionar simbolo x ou o na caixa pequena
@@ -12,8 +14,10 @@ const adicionarEvento = (caixaP, index = 0) => {
         elemento.addEventListener('click', () => {
             if (vez === 'X'){
                 const simboloClone = xSimbolo.cloneNode(true); //o appendchild é tranferido para a proxima casa selecionada e não duplicado
-                adicionarClasse('x-simbolo')(simboloClone);    //então é criado o simboloclone, para o X ou O ficarem nos lugares após
-                elemento.classList[2] = 'x-add';               //a próxima escolhida
+                adicionarClasse('x-simbolo')(simboloClone);
+                console.log(elemento.classList[2])    //então é criado o simboloclone, para o X ou O ficarem nos lugares após
+                elemento.classList[2] = 'x-add';  
+                console.log(elemento.classList[2])              //a próxima escolhida
                 elemento.appendChild(simboloClone);
             }
 
@@ -50,7 +54,6 @@ const removerClasse = classe => elemento => {
     elemento.classList.remove(classe);
 }
 
-// Essa função "ouve" eventos que ocorrem no html
 // Selecionando os elementos HTML e atribuindo a constantes
 const principal = document.getElementById('principal');
 const info = document.getElementById('info');
