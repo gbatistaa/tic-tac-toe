@@ -1,8 +1,6 @@
 // Atribuição de constantes dos elementos virtuais 
 const xSimbolo = document.createElement ('div');
 const oSimbolo = document.createElement ('div');
-const tabuleiro = document.getElementById('principal');
-
 const caixasPequenas = document.getElementsByClassName ('caixa-pequena');
 
 // Função recursiva para Adicionar simbolo x ou o na caixa pequena
@@ -14,21 +12,39 @@ const adicionarEvento = (caixaP, index = 0) => {
         elemento.addEventListener('click', () => {
             if (vez === 'X'){
                 const simboloClone = xSimbolo.cloneNode(true); //o appendchild é tranferido para a proxima casa selecionada e não duplicado
-                adicionarClasse('x-simbolo')(simboloClone);
-                console.log(elemento.classList[2])    //então é criado o simboloclone, para o X ou O ficarem nos lugares após
-                elemento.classList[2] = 'x-add';           //a próxima escolhida
-            }
-            else if (vez === 'O'){
+                adicionarClasse('x-simbolo')(simboloClone);    //então é criado o simboloclone, para o X ou O ficarem nos lugares após
+                                                               //a próxima escolhida
+                elemento.appendChild(simboloClone);
+                mudaVezX(caixasPequenas);
+            } else if (vez === 'O'){
                 const simboloClone = oSimbolo.cloneNode(true);
                 adicionarClasse('o-simbolo')(simboloClone);
-                elemento.classList[2] = 'o-add';
                 elemento.appendChild(simboloClone);
+                mudaVezO(caixasPequenas);
             }
         }, {once: true});
         adicionarEvento(caixaP, index + 1);
+    };
+};
+adicionarEvento(caixasPequenas);
+
+const mudaVezX = (objClasse, index = 0) => {
+    if (index === objClasse.length) return true;
+    else {
+        removerClasse('X')(objClasse[index])
+        adicionarClasse('O')(objClasse[index])
+        return mudaVezX(objClasse, index + 1)
     }
-} 
-adicionarEvento(caixasPequenas)
+}
+
+const mudaVezO = (objClasse, index = 0) => {
+    if (index === objClasse.length) return true;
+    else {
+        removerClasse('O')(objClasse[index])
+        adicionarClasse('X')(objClasse[index])
+        return mudaVezO(objClasse, index + 1)
+    }
+}
 
 // Função recursiva para transformar HTMLCollection (registro) em uma array de elementos da mesma classe HTML
 
