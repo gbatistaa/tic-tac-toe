@@ -16,11 +16,8 @@ const adicionarEvento = (caixaP, index = 0) => {
                 const simboloClone = xSimbolo.cloneNode(true); //o appendchild é tranferido para a proxima casa selecionada e não duplicado
                 adicionarClasse('x-simbolo')(simboloClone);
                 console.log(elemento.classList[2])    //então é criado o simboloclone, para o X ou O ficarem nos lugares após
-                elemento.classList[2] = 'x-add';  
-                console.log(elemento.classList[2])              //a próxima escolhida
-                elemento.appendChild(simboloClone);
+                elemento.classList[2] = 'x-add';           //a próxima escolhida
             }
-
             else if (vez === 'O'){
                 const simboloClone = oSimbolo.cloneNode(true);
                 adicionarClasse('o-simbolo')(simboloClone);
