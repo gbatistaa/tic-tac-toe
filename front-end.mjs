@@ -2,15 +2,16 @@
 const xSimbolo = document.createElement ('div');
 const oSimbolo = document.createElement ('div');
 const caixasPequenas = document.getElementsByClassName ('caixa-pequena');
-const regras = document.getElementById('ínfo');
+const regras = document.getElementById('info');
 
 // Função recursiva para Adicionar simbolo x ou o na caixa pequena
 const adicionarEvento = (caixaP, index = 0) => { 
     if (index === caixaP.length) return true;
     else  {
         const elemento = caixaP[index];
-        const vez = elemento.classList[2];
         elemento.addEventListener('click', () => {
+            console.log(elemento)
+            const vez = elemento.classList[2];
             if (vez === 'X'){
                 const simboloClone = xSimbolo.cloneNode(true); //o appendchild é tranferido para a proxima casa selecionada e não duplicado
                 adicionarClasse('x-simbolo')(simboloClone);    //então é criado o simboloclone, para o X ou O ficarem nos lugares após
