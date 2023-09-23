@@ -1,3 +1,14 @@
+// Atribuição de constantes dos elementos virtuais 
+const xSimbolo = document.createElement ('div')
+const oSimbolo = document.createElement ('div')
+const caixasPequenas = document.getElementsByClassName ('caixa-pequena')
+
+// Adicionar simbolo x na caixa pequena
+caixasPequenas[3].addEventListener('click',() => {
+    adicionarclasse('x-simbolo')(xSimbolo)
+    caixasPequenas[3].appendChild(xSimbolo)
+})
+
 // Função recursiva para transformar HTMLCollection (registro) em uma array de elementos da mesma classe HTML
 
 const criaArray = (classe, index = 0, array = []) => {
