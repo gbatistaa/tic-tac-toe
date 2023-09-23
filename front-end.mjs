@@ -3,11 +3,31 @@ const xSimbolo = document.createElement ('div')
 const oSimbolo = document.createElement ('div')
 const caixasPequenas = document.getElementsByClassName ('caixa-pequena')
 
-// Adicionar simbolo x na caixa pequena
-caixasPequenas[3].addEventListener('click',() => {
-    adicionarclasse('x-simbolo')(xSimbolo)
-    caixasPequenas[3].appendChild(xSimbolo)
-})
+// Adicionar simbolo x ou o na caixa pequena
+const adicionarEvento = (caixaP, index = 0) => { 
+    if (index === caixaP.length) return true
+    else  {
+        const elemento = caixaP[index]
+        const vez = elemento.classList[2]
+        elemento.addEventListener('click', () => {
+            if (vez === 'X'){
+                const simboloClone = xSimbolo.cloneNode(true) //o appendchild é tranferido para a proxima casa selecionada e não duplicado
+                adicionarClasse('x-simbolo')(simboloClone)    //então é criado o simboloclone, para o X ou O ficarem nos lugares após
+                elemento.classList[2] = 'x-add'               //a próxima escolhida
+                elemento.appendChild(simboloClone)
+            }
+
+            else if (vez === 'O'){
+                const simboloClone = oSimbolo.cloneNode(true)
+                adicionarClasse('o-simbolo')(simboloClone)
+                elemento.classList[2] = 'o-add'
+                elemento.appendChild(simboloClone) 
+            }
+        }, {once: true}) 
+        adicionarEvento(caixaP, index + 1)
+    }
+} 
+adicionarEvento(caixasPequenas)
 
 // Função recursiva para transformar HTMLCollection (registro) em uma array de elementos da mesma classe HTML
 
@@ -21,12 +41,12 @@ const criaArray = (classe, index = 0, array = []) => {
 };
 
 // Função para adicionar uma classe a um elemento
-const adicionarclasse = classe => elemento => {
+const adicionarClasse = classe => elemento => {
     elemento.classList.add(classe);
 }
 
 // Função para remover uma classe de um elemento
-const removerclasse = classe => elemento => {
+const removerClasse = classe => elemento => {
     elemento.classList.remove(classe);
 }
 
@@ -41,15 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // "Ouve o evento click no botão de instrução"
     btInstrucao.addEventListener('click', () =>{
-        adicionarclasse('ativo')(principal);
-        adicionarclasse('ativo')(info);
+        adicionarClasse('ativo')(principal);
+        adicionarClasse('ativo')(info);
         btInstrucao.style.display = 'none'
     })
 
     // "Ouve o evento click no botão de fechar"
     btFechar.addEventListener('click', () =>{
-        removerclasse('ativo')(principal);
-        removerclasse('ativo')(info);
+        removerClasse('ativo')(principal);
+        removerClasse('ativo')(info);
         btInstrucao.style.display = 'inline'
     })
 })
