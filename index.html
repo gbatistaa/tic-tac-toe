@@ -7,144 +7,149 @@
     <title>(Tic Tac Toe)²</title>
 </head>
 <body>
-    <div class="info">
+    <div id="info">
         <h2>As Regras</h2>
-        <p>Cada pequeno tabuleiro de jogo da velha 3 × 3 é definido como um subtabuleiro, e o maior tabuleiro 3 × 3 é definido como o tabuleiro principal.
-        </p>
-
+        <p>Cada pequeno tabuleiro de jogo da velha 3 × 3 é definido como um subtabuleiro, e o maior tabuleiro 3 × 3 é definido como o tabuleiro principal.</p>
+        
         <p>O jogo começa com o X jogando onde quiser em qualquer um dos 81 espaços vazios. Esta jogada “envia” seu oponente para a sua localização relativa. Por exemplo, se o X jogou no quadrado superior direito do seu subtabuleiro, então o O precisa jogar a seguir no subtabuleiro no canto superior direito do tabuleiro principal. O O pode então jogar em qualquer um dos nove espaços disponíveis nesse subtabuleiro, cada jogada enviando o X para um subtabuleiro diferente.</p>
-
+        
         <p>Se uma jogada é feita de forma a ganhar um subtabuleiro pelas regras do jogo da velha normal, então todo o subtabuleiro é marcado como uma vitória para o jogador no tabuleiro principal.</p>
-
+        
         <p>Uma vez que um subtabuleiro é ganho por um jogador ou está completamente preenchido, não se pode mais jogar nesse tabuleiro. Se um jogador é enviado para tal tabuleiro, então esse jogador pode jogar em qualquer outro tabuleiro.</p>
-
+        
         <p>O jogo termina quando um jogador ganha o tabuleiro principal ou não há mais jogadas legais restantes, caso em que o jogo é um empate.</p>
+        <button class="botao" id="botao-fechar">Fechar</button>
     </div>
-    <div id="tabuleiro-principal">
-        <div class="caixa-grande">
-            <div class="bloqueada"></div>
-            <div class="sub-tabuleiro">
-                <div class="caixa-pequena pos-1 X"></div>
-                <div class="caixa-pequena pos-2 X"></div>
-                <div class="caixa-pequena pos-3 X"></div>
-                <div class="caixa-pequena pos-4 X"></div>
-                <div class="caixa-pequena pos-5 X"></div>
-                <div class="caixa-pequena pos-6 X"></div>
-                <div class="caixa-pequena pos-7 X"></div>
-                <div class="caixa-pequena pos-8 X"></div>
-                <div class="caixa-pequena pos-9 X"></div>
+    <div>
+        <button class="botao" id="botao-instrucao">Instruções</button>
+    </div>
+    <div id="principal">
+        <div id="tabuleiro-principal">
+            <div class="caixa-grande">
+                <div class="bloqueada"></div>
+                <div class="sub-tabuleiro">
+                    <div class="caixa-pequena pos-1 X"></div>
+                    <div class="caixa-pequena pos-2 X"></div>
+                    <div class="caixa-pequena pos-3 X"></div>
+                    <div class="caixa-pequena pos-4 X"></div>
+                    <div class="caixa-pequena pos-5 X"></div>
+                    <div class="caixa-pequena pos-6 X"></div>
+                    <div class="caixa-pequena pos-7 X"></div>
+                    <div class="caixa-pequena pos-8 X"></div>
+                    <div class="caixa-pequena pos-9 X"></div>
+                </div>
             </div>
-        </div>
-        <div class="caixa-grande">
-            <div class="bloqueada"></div>
-            <div class="sub-tabuleiro">
-                <div class="caixa-pequena pos-1 X"></div>
-                <div class="caixa-pequena pos-2 X"></div>
-                <div class="caixa-pequena pos-3 X"></div>
-                <div class="caixa-pequena pos-4 X"></div>
-                <div class="caixa-pequena pos-5 X"></div>
-                <div class="caixa-pequena pos-6 X"></div>
-                <div class="caixa-pequena pos-7 X"></div>
-                <div class="caixa-pequena pos-8 X"></div>
-                <div class="caixa-pequena pos-9 X"></div>
+            <div class="caixa-grande">
+                <div class="bloqueada"></div>
+                <div class="sub-tabuleiro">
+                    <div class="caixa-pequena pos-1 X"></div>
+                    <div class="caixa-pequena pos-2 X"></div>
+                    <div class="caixa-pequena pos-3 X"></div>
+                    <div class="caixa-pequena pos-4 X"></div>
+                    <div class="caixa-pequena pos-5 X"></div>
+                    <div class="caixa-pequena pos-6 X"></div>
+                    <div class="caixa-pequena pos-7 X"></div>
+                    <div class="caixa-pequena pos-8 X"></div>
+                    <div class="caixa-pequena pos-9 X"></div>
+                </div>
             </div>
-        </div>
-        <div class="caixa-grande">
-            <div class="bloqueada"></div>
-            <div class="sub-tabuleiro">
-                <div class="caixa-pequena pos-1 X"></div>
-                <div class="caixa-pequena pos-2 X"></div>
-                <div class="caixa-pequena pos-3 X"></div>
-                <div class="caixa-pequena pos-4 X"></div>
-                <div class="caixa-pequena pos-5 X"></div>
-                <div class="caixa-pequena pos-6 X"></div>
-                <div class="caixa-pequena pos-7 X"></div>
-                <div class="caixa-pequena pos-8 X"></div>
-                <div class="caixa-pequena pos-9 X"></div>
+            <div class="caixa-grande">
+                <div class="bloqueada"></div>
+                <div class="sub-tabuleiro">
+                    <div class="caixa-pequena pos-1 X"></div>
+                    <div class="caixa-pequena pos-2 X"></div>
+                    <div class="caixa-pequena pos-3 X"></div>
+                    <div class="caixa-pequena pos-4 X"></div>
+                    <div class="caixa-pequena pos-5 X"></div>
+                    <div class="caixa-pequena pos-6 X"></div>
+                    <div class="caixa-pequena pos-7 X"></div>
+                    <div class="caixa-pequena pos-8 X"></div>
+                    <div class="caixa-pequena pos-9 X"></div>
+                </div>
             </div>
-        </div>
-        <div class="caixa-grande">
-            <div class="bloqueada"></div>
-            <div class="sub-tabuleiro">
-                <div class="caixa-pequena pos-1 X"></div>
-                <div class="caixa-pequena pos-2 X"></div>
-                <div class="caixa-pequena pos-3 X"></div>
-                <div class="caixa-pequena pos-4 X"></div>
-                <div class="caixa-pequena pos-5 X"></div>
-                <div class="caixa-pequena pos-6 X"></div>
-                <div class="caixa-pequena pos-7 X"></div>
-                <div class="caixa-pequena pos-8 X"></div>
-                <div class="caixa-pequena pos-9 X"></div>
+            <div class="caixa-grande">
+                <div class="bloqueada"></div>
+                <div class="sub-tabuleiro">
+                    <div class="caixa-pequena pos-1 X"></div>
+                    <div class="caixa-pequena pos-2 X"></div>
+                    <div class="caixa-pequena pos-3 X"></div>
+                    <div class="caixa-pequena pos-4 X"></div>
+                    <div class="caixa-pequena pos-5 X"></div>
+                    <div class="caixa-pequena pos-6 X"></div>
+                    <div class="caixa-pequena pos-7 X"></div>
+                    <div class="caixa-pequena pos-8 X"></div>
+                    <div class="caixa-pequena pos-9 X"></div>
+                </div>
             </div>
-        </div>
-        <div class="caixa-grande">
-            <div class="bloqueada"></div>
-            <div class="sub-tabuleiro">
-                <div class="caixa-pequena pos-1 X"></div>
-                <div class="caixa-pequena pos-2 X"></div>
-                <div class="caixa-pequena pos-3 X"></div>
-                <div class="caixa-pequena pos-4 X"></div>
-                <div class="caixa-pequena pos-5 X"></div>
-                <div class="caixa-pequena pos-6 X"></div>
-                <div class="caixa-pequena pos-7 X"></div>
-                <div class="caixa-pequena pos-8 X"></div>
-                <div class="caixa-pequena pos-9 X"></div>
+            <div class="caixa-grande">
+                <div class="bloqueada"></div>
+                <div class="sub-tabuleiro">
+                    <div class="caixa-pequena pos-1 X"></div>
+                    <div class="caixa-pequena pos-2 X"></div>
+                    <div class="caixa-pequena pos-3 X"></div>
+                    <div class="caixa-pequena pos-4 X"></div>
+                    <div class="caixa-pequena pos-5 X"></div>
+                    <div class="caixa-pequena pos-6 X"></div>
+                    <div class="caixa-pequena pos-7 X"></div>
+                    <div class="caixa-pequena pos-8 X"></div>
+                    <div class="caixa-pequena pos-9 X"></div>
+                </div>
             </div>
-        </div>
-        <div class="caixa-grande">
-            <div class="bloqueada"></div>
-            <div class="sub-tabuleiro">
-                <div class="caixa-pequena pos-1 X"></div>
-                <div class="caixa-pequena pos-2 X"></div>
-                <div class="caixa-pequena pos-3 X"></div>
-                <div class="caixa-pequena pos-4 X"></div>
-                <div class="caixa-pequena pos-5 X"></div>
-                <div class="caixa-pequena pos-6 X"></div>
-                <div class="caixa-pequena pos-7 X"></div>
-                <div class="caixa-pequena pos-8 X"></div>
-                <div class="caixa-pequena pos-9 X"></div>
+            <div class="caixa-grande">
+                <div class="bloqueada"></div>
+                <div class="sub-tabuleiro">
+                    <div class="caixa-pequena pos-1 X"></div>
+                    <div class="caixa-pequena pos-2 X"></div>
+                    <div class="caixa-pequena pos-3 X"></div>
+                    <div class="caixa-pequena pos-4 X"></div>
+                    <div class="caixa-pequena pos-5 X"></div>
+                    <div class="caixa-pequena pos-6 X"></div>
+                    <div class="caixa-pequena pos-7 X"></div>
+                    <div class="caixa-pequena pos-8 X"></div>
+                    <div class="caixa-pequena pos-9 X"></div>
+                </div>
             </div>
-        </div>
-        <div class="caixa-grande">
-            <div class="bloqueada"></div>
-            <div class="sub-tabuleiro">
-                <div class="caixa-pequena pos-1 X"></div>
-                <div class="caixa-pequena pos-2 X"></div>
-                <div class="caixa-pequena pos-3 X"></div>
-                <div class="caixa-pequena pos-4 X"></div>
-                <div class="caixa-pequena pos-5 X"></div>
-                <div class="caixa-pequena pos-6 X"></div>
-                <div class="caixa-pequena pos-7 X"></div>
-                <div class="caixa-pequena pos-8 X"></div>
-                <div class="caixa-pequena pos-9 X"></div>
+            <div class="caixa-grande">
+                <div class="bloqueada"></div>
+                <div class="sub-tabuleiro">
+                    <div class="caixa-pequena pos-1 X"></div>
+                    <div class="caixa-pequena pos-2 X"></div>
+                    <div class="caixa-pequena pos-3 X"></div>
+                    <div class="caixa-pequena pos-4 X"></div>
+                    <div class="caixa-pequena pos-5 X"></div>
+                    <div class="caixa-pequena pos-6 X"></div>
+                    <div class="caixa-pequena pos-7 X"></div>
+                    <div class="caixa-pequena pos-8 X"></div>
+                    <div class="caixa-pequena pos-9 X"></div>
+                </div>
             </div>
-        </div>
-        <div class="caixa-grande">
-            <div class="bloqueada"></div>
-            <div class="sub-tabuleiro">
-                <div class="caixa-pequena pos-1 X"></div>
-                <div class="caixa-pequena pos-2 X"></div>
-                <div class="caixa-pequena pos-3 X"></div>
-                <div class="caixa-pequena pos-4 X"></div>
-                <div class="caixa-pequena pos-5 X"></div>
-                <div class="caixa-pequena pos-6 X"></div>
-                <div class="caixa-pequena pos-7 X"></div>
-                <div class="caixa-pequena pos-8 X"></div>
-                <div class="caixa-pequena pos-9 X"></div>
+            <div class="caixa-grande">
+                <div class="bloqueada"></div>
+                <div class="sub-tabuleiro">
+                    <div class="caixa-pequena pos-1 X"></div>
+                    <div class="caixa-pequena pos-2 X"></div>
+                    <div class="caixa-pequena pos-3 X"></div>
+                    <div class="caixa-pequena pos-4 X"></div>
+                    <div class="caixa-pequena pos-5 X"></div>
+                    <div class="caixa-pequena pos-6 X"></div>
+                    <div class="caixa-pequena pos-7 X"></div>
+                    <div class="caixa-pequena pos-8 X"></div>
+                    <div class="caixa-pequena pos-9 X"></div>
+                </div>
             </div>
-        </div>
-        <div class="caixa-grande">
-            <div class="bloqueada"></div>
-            <div class="sub-tabuleiro">
-                <div class="caixa-pequena pos-1 X"></div>
-                <div class="caixa-pequena pos-2 X"></div>
-                <div class="caixa-pequena pos-3 X"></div>
-                <div class="caixa-pequena pos-4 X"></div>
-                <div class="caixa-pequena pos-5 X"></div>
-                <div class="caixa-pequena pos-6 X"></div>
-                <div class="caixa-pequena pos-7 X"></div>
-                <div class="caixa-pequena pos-8 X"></div>
-                <div class="caixa-pequena pos-9 X"></div>
+            <div class="caixa-grande">
+                <div class="bloqueada"></div>
+                <div class="sub-tabuleiro">
+                    <div class="caixa-pequena pos-1 X"></div>
+                    <div class="caixa-pequena pos-2 X"></div>
+                    <div class="caixa-pequena pos-3 X"></div>
+                    <div class="caixa-pequena pos-4 X"></div>
+                    <div class="caixa-pequena pos-5 X"></div>
+                    <div class="caixa-pequena pos-6 X"></div>
+                    <div class="caixa-pequena pos-7 X"></div>
+                    <div class="caixa-pequena pos-8 X"></div>
+                    <div class="caixa-pequena pos-9 X"></div>
+                </div>
             </div>
         </div>
     </div>
