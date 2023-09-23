@@ -2,7 +2,7 @@
 
 const criaArray = (classe, index = 0, array = []) => {
     const key = index.toString();
-    if (index === 9) return array;
+    if (index === classe.length) return array;
     else {
         const vetor = classe[key];
         return criaArray (classe, index + 1, [...array, vetor]);
