@@ -164,10 +164,16 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
 #botao-instrucao {
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+
+#botao-instrucao:hover, #botao-fechar:hover{
+    background-color: #7d2da0;
 }
 
 #botao-fechar {
     margin-top: 20px;
+    cursor: pointer;
 }
 
 .x-simbolo {
@@ -186,7 +192,17 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
 
 .X-info{
     color: #ff0000;
+    font-weight: 900;
 }
 .O-info{
     color: #8a2be2;
+    font-weight: 900;
+}
+
+.caixa-pequena.X-add, .caixa-pequena.O-add {
+    cursor: not-allowed;
+}
+
+.caixa-pequena{
+    cursor: pointer;
 }
