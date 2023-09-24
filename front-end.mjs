@@ -35,9 +35,7 @@ const adicionarEvento = (caixaP, index = 0) => {
                 adicionarClasse('O-add')(elemento);             // identifica um quadrante selecioando 
                 vitoriaParcial(elemento.parentNode);            // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
             }
-        }
-        // , {once: true}
-        );
+        });
         adicionarEvento(caixaP, index + 1);
     };
 };
