@@ -24,13 +24,15 @@ const adicionarEvento = (caixaP, index = 0) => {
                 mudaVezX(caixasPequenas);
                 removerClasse(elemento.classList[2])(elemento)
                 adicionarClasse('X-add')(elemento);            //identifica um quadrante selecionado
+                vitoriaParcial(elemento.parentNode);
             } else if (vez === 'O'){
                 const simboloClone = oSimbolo.cloneNode(true);
                 adicionarClasse('o-simbolo')(simboloClone);
                 elemento.appendChild(simboloClone);
                 mudaVezO(caixasPequenas);
-                removerClasse(elemento.classList[2])(elemento)
-                adicionarClasse('O-add')(elemento)             //identifica um quadrante selecioando   
+                removerClasse(elemento.classList[2])(elemento);
+                adicionarClasse('O-add')(elemento);             // identifica um quadrante selecioando 
+                vitoriaParcial(elemento.parentNode);            // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
             }
         }, {once: true});
         adicionarEvento(caixaP, index + 1);
@@ -98,3 +100,11 @@ btFechar.addEventListener('click', () =>{
     removerClasse('ativo')(info);
     btInstrucao.style.display = 'inline';
 })
+
+const vitoriaParcial = (subTab) => {
+    const caixinhas = subTab.children
+    if (caixinhas[0].classList[2] === caixinhas[1].classList[2] && caixinhas[0].classList[2] === caixinhas[2].classList[2] && caixinhas[0].classList[2].includes('add')) {
+        return true;
+    };
+    
+};
