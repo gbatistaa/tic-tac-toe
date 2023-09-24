@@ -159,6 +159,7 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
     justify-content: center;
     align-items: center;
     border-radius: 25px;
+    transition: 0.3s ease-out;
 }
 
 #botao-instrucao {
