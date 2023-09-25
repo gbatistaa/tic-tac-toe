@@ -7,7 +7,7 @@ const principal = document.getElementById('principal');
 const info = document.getElementById('info');
 const btInstrucao = document.getElementById('botao-instrucao');
 const btFechar = document.getElementById('botao-fechar');
-const btReniciar = document.getElementById('botao-reiniciar');
+const btReiniciar = document.getElementById('botao-reiniciar');
 const regras = document.getElementById('info');
 const caixasPequenas = document.getElementsByClassName ('caixa-pequena');
 
@@ -92,7 +92,7 @@ btInstrucao.addEventListener('click', () => {
     adicionarClasse('ativo')(principal);
     adicionarClasse('ativo')(info);
     btInstrucao.style.display = 'none';
-    btReniciar.style.display = 'none';
+    btReiniciar.style.display = 'none';
 })
 
 // "Ouve o evento click no botão de fechar"
@@ -101,7 +101,7 @@ btFechar.addEventListener('click', () =>{
     removerClasse('ativo')(principal);
     removerClasse('ativo')(info);
     btInstrucao.style.display = 'inline';
-    btReniciar.style.display = 'inline';
+    btReiniciar.style.display = 'inline';
 })
 
 // Função auxiliar para indentificar o empate, somente quando for garantida
@@ -151,7 +151,7 @@ const vitoriaParcial = (subTab) => {
     } else if (temSimbolo(caixinhas) === true) return false;
 };
 
-btReniciar.addEventListener('click', () =>{
+btReiniciar.addEventListener('click', () =>{
     reiniciar(caixasPequenas)
 })
 
