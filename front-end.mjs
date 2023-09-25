@@ -77,12 +77,12 @@ const criaArray = (classe, index = 0, array = []) => {
 };
 
 // Função para adicionar uma classe a um elemento
-const adicionarClasse = classe => elemento => {
+const adicionarClasse = (classe) => (elemento) => {
     elemento.classList.add(classe);
 }
 
 // Função para remover uma classe de um elemento
-const removerClasse = classe => elemento => {
+const removerClasse = (classe) => (elemento) => {
     elemento.classList.remove(classe);
 }
 
@@ -104,27 +104,65 @@ btFechar.addEventListener('click', () =>{
     btReniciar.style.display = 'inline';
 })
 
+// Função auxiliar para indentificar o empate, somente quando for garantida
+// que todas as caixinhas possuem simbolos dentro
+
+const temSimbolo = (objClasse, index = 0) => {
+    const elementoAtual = objClasse[index]
+    if (elementoAtual.innerHTML !== "") {
+        if (index === objClasse.length - 1) return true
+        else return temSimbolo(objClasse, index + 1);
+    }
+}
+
+// Função de estruturas condicionais para analisar qual tipo de vitória, entre as 8 combinações possíveis
+// Caso não bata com nenhuma das 8 e todos as caixinhas tenham simbolos a função irá retornar false, indicando velha (empate)
+
 const vitoriaParcial = (subTab) => {
-    const caixinhas = subTab.children
-    if (caixinhas[0].classList[2] === caixinhas[1].classList[2] && caixinhas[0].classList[2] === caixinhas[2].classList[2] && caixinhas[0].classList[2].includes('add')) {
-        return true;
+    const caixinhas = subTab.children;
+    const simbolos = {
+        c1: caixinhas[0].innerHTML,
+        c2: caixinhas[1].innerHTML,
+        c3: caixinhas[2].innerHTML,
+        c4: caixinhas[3].innerHTML,
+        c5: caixinhas[4].innerHTML,
+        c6: caixinhas[5].innerHTML,
+        c7: caixinhas[6].innerHTML,
+        c8: caixinhas[7].innerHTML,
+        c9: caixinhas[8].innerHTML,
     };
     
+    if (simbolos.c1 === simbolos.c2 && simbolos.c1 === simbolos.c3 && simbolos.c1 !== "") {
+        return true
+    } else if (simbolos.c4 === simbolos.c5 && simbolos.c4 === simbolos.c6 && simbolos.c4 !== "") {
+        return true
+    } else if (simbolos.c7 === simbolos.c8 && simbolos.c7 === simbolos.c9 && simbolos.c7 !== "") {
+        return true
+    } else if (simbolos.c1 === simbolos.c4 && simbolos.c1 === simbolos.c7 && simbolos.c1 !== "") {
+        return true
+    } else if (simbolos.c2 === simbolos.c5 && simbolos.c2 === simbolos.c8 && simbolos.c2 !== "") {
+        return true
+    } else if (simbolos.c3 === simbolos.c6 && simbolos.c3 === simbolos.c9 && simbolos.c3 !== "") {
+        return true
+    } else if (simbolos.c1 === simbolos.c5 && simbolos.c1 === simbolos.c9 && simbolos.c1 !== "") {
+        return true
+    } else if (simbolos.c3 === simbolos.c5 && simbolos.c3 === simbolos.c7 && simbolos.c3 !== "") {
+        return true
+    } else if (temSimbolo(caixinhas) === true) return false;
 };
 
 btReniciar.addEventListener('click', () =>{
-    reinicar(caixasPequenas)
+    reiniciar(caixasPequenas)
 })
 
-const reinicar = (elemento, index = 0) => {
+const reiniciar = (elemento, index = 0) => {
     if (index === elemento.length) return true;
     else {
         removerClasse('X-add')(elemento[index]);
         removerClasse('O-add')(elemento[index]);
         removerClasse('O')(elemento[index]);    
         adicionarClasse('X')(elemento[index]);
-        // elemento[index].removeChild(elemento[index].firstChild);
         elemento[index].innerHTML = "";
-        return reinicar(elemento,index+1);
+        return reiniciar(elemento,index+1);
     }
 }
