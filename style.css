@@ -23,7 +23,6 @@ body{
     align-items: center;
     justify-content: center;
     background: linear-gradient(45deg, #5d0682 0%, #008ca8 100%);
-    overflow: hidden;
 }
 
 #tabuleiro-principal{
@@ -160,6 +159,7 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
     align-items: center;
     border-radius: 25px;
     transition: 0.3s ease-out;
+    cursor: pointer;
 }
 
 .botao:hover{
@@ -167,21 +167,31 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
 }
 
 #botoes {
-    margin-right: 20px;
-    display: flex;
-    row-gap: 20px;
-    flex-direction: column;
+    position: absolute;
+    display: grid;
+    top: 39%;
+    right: 100px;
 }
 
 #botao-instrucao {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    margin-bottom: 60px;
 }
 
 #botao-fechar {
     margin-top: 20px;
     cursor: pointer;
+}
+
+#logo{
+    height: 180px;
+    width: 225.51px;
+    position: absolute;
+    display: grid;
+    top: 20px;
+    left: 20px; 
 }
 
 .x-simbolo {
