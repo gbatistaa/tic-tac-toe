@@ -10,6 +10,8 @@ const btFechar = document.getElementById('botao-fechar');
 const btReiniciar = document.getElementById('botao-reiniciar');
 const regras = document.getElementById('info');
 const caixasPequenas = document.getElementsByClassName ('caixa-pequena');
+const subTabuleiros = document.getElementsByClassName ('sub-tabuleiro');
+const divsBloqueio = document.getElementsByClassName('bloqueada');
 
 // Função recursiva para Adicionar simbolo x ou o na caixa pequena
 const adicionarEvento = (caixaP, index = 0) => { 
@@ -25,7 +27,9 @@ const adicionarEvento = (caixaP, index = 0) => {
                 mudaVezX(caixasPequenas);
                 removerClasse(elemento.classList[2])(elemento)
                 adicionarClasse('X-add')(elemento);            //identifica um quadrante selecionado
-                vitoriaParcial(elemento.parentNode);
+                vitoriaParcial(elemento.parentNode);           // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
+                bloqueiaTab(elemento);                               
+
             } else if (vez === 'O'){
                 const simboloClone = oSimbolo.cloneNode(true);
                 adicionarClasse('o-simbolo')(simboloClone);
@@ -34,6 +38,7 @@ const adicionarEvento = (caixaP, index = 0) => {
                 removerClasse(elemento.classList[2])(elemento);
                 adicionarClasse('O-add')(elemento);             // identifica um quadrante selecioando 
                 vitoriaParcial(elemento.parentNode);            // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
+                bloqueiaTab(elemento);                             
             }
         });
         adicionarEvento(caixaP, index + 1);
@@ -163,6 +168,22 @@ const reiniciar = (elemento, index = 0) => {
         removerClasse('O')(elemento[index]);    
         adicionarClasse('X')(elemento[index]);
         elemento[index].innerHTML = "";
-        return reiniciar(elemento,index+1);
-    }
-}
+        return reiniciar(elemento,index + 1);
+    };
+};
+
+const bloqueiaTab = (caixinha, index = 0) => {
+    const tabAtual = subTabuleiros[index];
+    const posicaoCaixinha = caixinha.classList[1];
+    const posicaoTabuleiro = tabAtual.classList[1];
+    const divAtual = divsBloqueio[index];
+    if (index === subTabuleiros.length) return undefined;
+    else {
+        if (posicaoCaixinha !== posicaoTabuleiro) {
+            divAtual.style.display = 'inline';
+        } else {
+            divAtual.style.display = 'none';
+        };
+        return bloqueiaTab(caixinha, index + 1);
+    };
+};
