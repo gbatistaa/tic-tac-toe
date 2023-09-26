@@ -31,7 +31,7 @@ const adicionarEvento = (caixaP, index = 0) => {
                 removerClasse(elemento.classList[2])(elemento)
                 adicionarClasse('X-add')(elemento);            //identifica um quadrante selecionado
                 vitoriaParcial(subTab);           // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
-                //bloqueiaTab(elemento);
+                bloqueiaTab(elemento);
                 tracoVitoria(elemento)(vitoriaParcial(subTab))                         
 
             } else if (vez === 'O'){
@@ -41,8 +41,8 @@ const adicionarEvento = (caixaP, index = 0) => {
                 mudaVezO(caixasPequenas);
                 removerClasse(elemento.classList[2])(elemento);
                 adicionarClasse('O-add')(elemento);             // identifica um quadrante selecioando 
-                vitoriaParcial(subTab);            // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
-                //bloqueiaTab(elemento);
+                vitoriaParcial(subTab);                         // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
+                bloqueiaTab(elemento);
                 tracoVitoria(elemento)(vitoriaParcial(subTab))                             
             }
         });
@@ -185,7 +185,7 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
         caixaGrande.appendChild(xAnima1.cloneNode())
         caixaGrande.appendChild(xAnima2.cloneNode())}, 3500)
     }
-    if (tipoVitoria < 9 && tipoVitoria !== false && tipoVitoria !== null){
+    if (tipoVitoria < 9 && tipoVitoria !== null){
         switch (tipoVitoria) {
             case 1:
                 traco.style.translate = '0px -58px'
@@ -236,6 +236,10 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
                 traco.style.animation = 'tracoDiagonal 3s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 2s ease-out 1.2s forwards'
                 animacaoX()
+                break;
+            case false:
+                tabuleirinho.style.animation = 'velha 2s ease-out forwards'
+                tabuleirinho.style.cursor = 'not-allowed'
                 break;
         }
     }
