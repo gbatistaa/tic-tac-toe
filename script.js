@@ -12,6 +12,8 @@ const regras = document.getElementById('info');
 const caixasPequenas = document.getElementsByClassName ('caixa-pequena');
 const subTabuleiros = document.getElementsByClassName ('sub-tabuleiro');
 const divsBloqueio = document.getElementsByClassName('bloqueada');
+const divsCorte = document.getElementsByClassName('corte-vitoria')
+
 
 // Função recursiva para Adicionar simbolo x ou o na caixa pequena
 const adicionarEvento = (caixaP, index = 0) => { 
@@ -20,6 +22,7 @@ const adicionarEvento = (caixaP, index = 0) => {
         const elemento = caixaP[index];
         elemento.addEventListener('click', () => {
             const vez = elemento.classList[2];
+            const subTab = elemento.parentNode
             if (vez === 'X') {
                 const simboloClone = xSimbolo.cloneNode(true); //com appendchild o X ou o O são tranferidos para a proxima casa selecionada e não duplicados
                 adicionarClasse('x-simbolo')(simboloClone);    //então é criado o simboloclone, para o X ou O ficarem nos lugares após
@@ -27,8 +30,9 @@ const adicionarEvento = (caixaP, index = 0) => {
                 mudaVezX(caixasPequenas);
                 removerClasse(elemento.classList[2])(elemento)
                 adicionarClasse('X-add')(elemento);            //identifica um quadrante selecionado
-                vitoriaParcial(elemento.parentNode);           // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
-                bloqueiaTab(elemento);                               
+                vitoriaParcial(subTab);           // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
+                //bloqueiaTab(elemento);
+                tracoVitoria(elemento)(vitoriaParcial(subTab))                         
 
             } else if (vez === 'O'){
                 const simboloClone = oSimbolo.cloneNode(true);
@@ -37,8 +41,9 @@ const adicionarEvento = (caixaP, index = 0) => {
                 mudaVezO(caixasPequenas);
                 removerClasse(elemento.classList[2])(elemento);
                 adicionarClasse('O-add')(elemento);             // identifica um quadrante selecioando 
-                vitoriaParcial(elemento.parentNode);            // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
-                bloqueiaTab(elemento);                             
+                vitoriaParcial(subTab);            // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
+                //bloqueiaTab(elemento);
+                tracoVitoria(elemento)(vitoriaParcial(subTab))                             
             }
         });
         adicionarEvento(caixaP, index + 1);
@@ -138,23 +143,103 @@ const vitoriaParcial = (subTab) => {
     };
     
     if (simbolos.c1 === simbolos.c2 && simbolos.c1 === simbolos.c3 && simbolos.c1 !== "") {
-        return true
+        return 1
     } else if (simbolos.c4 === simbolos.c5 && simbolos.c4 === simbolos.c6 && simbolos.c4 !== "") {
-        return true
+        return 2
     } else if (simbolos.c7 === simbolos.c8 && simbolos.c7 === simbolos.c9 && simbolos.c7 !== "") {
-        return true
+        return 3
     } else if (simbolos.c1 === simbolos.c4 && simbolos.c1 === simbolos.c7 && simbolos.c1 !== "") {
-        return true
+        return 4
     } else if (simbolos.c2 === simbolos.c5 && simbolos.c2 === simbolos.c8 && simbolos.c2 !== "") {
-        return true
+        return 5
     } else if (simbolos.c3 === simbolos.c6 && simbolos.c3 === simbolos.c9 && simbolos.c3 !== "") {
-        return true
+        return 6
     } else if (simbolos.c1 === simbolos.c5 && simbolos.c1 === simbolos.c9 && simbolos.c1 !== "") {
-        return true
+        return 7
     } else if (simbolos.c3 === simbolos.c5 && simbolos.c3 === simbolos.c7 && simbolos.c3 !== "") {
-        return true
+        return 8
     } else if (temSimbolo(caixinhas) === true) return false;
+    else return null;
 };
+
+const xAnima1 = xSimbolo.cloneNode();
+xAnima1.style.rotate = '45deg'
+xAnima1.style.position = 'absolute'
+xAnima1.style.zIndex = '4'
+xAnima1.style.height = '45px'
+const xAnima2 = xSimbolo.cloneNode();
+xAnima2.style.rotate = '-45deg'
+xAnima2.style.position = 'absolute'
+xAnima2.style.zIndex = '3'
+xAnima2.style.height = '45px'
+const oAnima = document.createElement ('svg');
+
+const tracoVitoria = (caixinha) => (tipoVitoria) => {
+    const tabuleirinho = caixinha.parentElement;
+    const caixaGrande = tabuleirinho.parentElement;
+    const traco = caixaGrande.children[1];
+    const animacaoX = () => {
+        setTimeout(() => {
+        xAnima1.style.animation = 'x 2s ease-out forwards'
+        xAnima2.style.animation = 'x 2s ease-out 0.7s forwards'
+        caixaGrande.appendChild(xAnima1.cloneNode())
+        caixaGrande.appendChild(xAnima2.cloneNode())}, 3500)
+    }
+    if (tipoVitoria < 9 && tipoVitoria !== false && tipoVitoria !== null){
+        switch (tipoVitoria) {
+            case 1:
+                traco.style.translate = '0px -58px'
+                traco.style.animation = 'tracoHorizVert 3s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 2s ease-out 1.2s forwards'
+                animacaoX()
+                break;
+            case 2:
+                traco.style.animation = 'tracoHorizVert 3s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 2s ease-out 1.2s forwards'
+                animacaoX()
+                break;
+            case 3:
+                traco.style.translate = '0px 58px'
+                traco.style.animation = 'tracoHorizVert 3s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 2s ease-out 1.2s forwards'
+                animacaoX()
+                break;
+            case 4:
+                traco.style.rotate = '90deg'
+                traco.style.translate = '-58px 0px'
+                traco.style.animation = 'tracoHorizVert 3s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 2s ease-out 1.2s forwards'
+                animacaoX()
+                break;
+            case 5:
+                traco.style.rotate = '90deg'
+                traco.style.translate = '0px 0px'
+                traco.style.animation = 'tracoHorizVert 3s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 2s ease-out 1.2s forwards'
+                animacaoX()
+                break;
+            case 6:
+                traco.style.rotate = '90deg'
+                traco.style.translate = '58px 0px'
+                traco.style.animation = 'tracoHorizVert 3s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 2s ease-out 1.2s forwards'
+                animacaoX()
+                break;
+            case 7:
+                traco.style.rotate = '45deg'
+                traco.style.animation = 'tracoDiagonal 3s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 2s ease-out 1.2s forwards'
+                animacaoX()
+                break;
+            case 8:
+                traco.style.rotate = '-45deg'
+                traco.style.animation = 'tracoDiagonal 3s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 2s ease-out 1.2s forwards'
+                animacaoX()
+                break;
+        }
+    }
+}
 
 btReiniciar.addEventListener('click', () =>{
     reiniciar(caixasPequenas)
@@ -167,8 +252,18 @@ const reiniciar = (elemento, index = 0) => {
         removerClasse('O-add')(elemento[index]);
         removerClasse('O')(elemento[index]);    
         adicionarClasse('X')(elemento[index]);
+        liberaTabs(divsBloqueio);
         elemento[index].innerHTML = "";
         return reiniciar(elemento,index + 1);
+    };
+};
+
+const liberaTabs = (bloqueios, index = 0) => {
+    const bloqueioAtual = bloqueios[index];
+    if (index === bloqueios.length) return undefined;
+    else {
+        bloqueioAtual.style.display = 'none';
+        return liberaTabs(bloqueios, index + 1);
     };
 };
 
