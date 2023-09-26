@@ -13,6 +13,7 @@ const caixasPequenas = document.getElementsByClassName ('caixa-pequena');
 const subTabuleiros = document.getElementsByClassName ('sub-tabuleiro');
 const divsBloqueio = document.getElementsByClassName('bloqueada');
 const divsCorte = document.getElementsByClassName('corte-vitoria')
+const caixasGrandes = document.getElementsByClassName('caixa-grande')
 
 
 // Função recursiva para Adicionar simbolo x ou o na caixa pequena
@@ -31,8 +32,10 @@ const adicionarEvento = (caixaP, index = 0) => {
                 removerClasse(elemento.classList[2])(elemento)
                 adicionarClasse('X-add')(elemento);            //identifica um quadrante selecionado
                 vitoriaParcial(subTab);           // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
-                bloqueiaTab(elemento);
-                tracoVitoria(elemento)(vitoriaParcial(subTab))                         
+                
+                tracoVitoria(elemento)(vitoriaParcial(subTab)) 
+                bloqueiaTab(elemento);     
+                liberaTabs(caixasGrandes)                   
 
             } else if (vez === 'O'){
                 const simboloClone = oSimbolo.cloneNode(true);
@@ -42,8 +45,10 @@ const adicionarEvento = (caixaP, index = 0) => {
                 removerClasse(elemento.classList[2])(elemento);
                 adicionarClasse('O-add')(elemento);             // identifica um quadrante selecioando 
                 vitoriaParcial(subTab);                         // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
-                bloqueiaTab(elemento);
-                tracoVitoria(elemento)(vitoriaParcial(subTab))                             
+    
+                tracoVitoria(elemento)(vitoriaParcial(subTab))  
+                bloqueiaTab(elemento);   
+                liberaTabs(caixasGrandes)                        
             }
         });
         adicionarEvento(caixaP, index + 1);
@@ -190,7 +195,7 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
             case 1:
                 traco.style.translate = '0px -58px'
                 traco.style.animation = 'tracoHorizVert 3s ease-out forwards'
-                tabuleirinho.style.animation = 'someTab 2s ease-out 1.2s forwards'
+                adicionarClasse('X-vitoria')(caixaGrande)
                 animacaoX()
                 break;
             case 2:
@@ -262,26 +267,40 @@ const reiniciar = (elemento, index = 0) => {
     };
 };
 
-const liberaTabs = (bloqueios, index = 0) => {
-    const bloqueioAtual = bloqueios[index];
-    if (index === bloqueios.length) return undefined;
+const liberaTabs = (tabuleiro, index = 0) => {
+    const tabAtual = tabuleiro[index];
+    if (index === tabAtual.length) return undefined;
     else {
-        bloqueioAtual.style.display = 'none';
-        return liberaTabs(bloqueios, index + 1);
+        
+        if (tabAtual.classList[1] !== 'X-vitoria') {
+            tabAtual.style.opacity = '100%'
+        }
+        return liberaTabs(tabuleiro, index + 1);
     };
 };
 
 const bloqueiaTab = (caixinha, index = 0) => {
+    const paiCaixinha = caixinha.parentElement
     const tabAtual = subTabuleiros[index];
     const posicaoCaixinha = caixinha.classList[1];
     const posicaoTabuleiro = tabAtual.classList[1];
     const divAtual = divsBloqueio[index];
+    const paiAtual = tabAtual.parentElement
     if (index === subTabuleiros.length) return undefined;
     else {
-        if (posicaoCaixinha !== posicaoTabuleiro) {
-            divAtual.style.display = 'inline';
-        } else {
-            divAtual.style.display = 'none';
+        if (vitoriaParcial(paiCaixinha) !== null){
+            if (tabAtual.classList[1] !== 'X-vitoria') {
+                divAtual.style.display = 'inline'
+                paiAtual.style.opacity = '100%'
+            }
+            paiCaixinha.style.animation = 'someTab 1s ease-out 3.1s forwards'
+        } else if (posicaoCaixinha !== posicaoTabuleiro && typeof vitoriaParcial(tabAtual) !== 'number') {
+            tabAtual.style.animation = 'addBloq 1s ease-out forwards'
+            divAtual.style.display = 'inline'
+        } else if (posicaoCaixinha === posicaoTabuleiro && vitoriaParcial(tabAtual) !== false) {
+            tabAtual.style.animation = 'tiraBloq 1s ease-out forwards'
+            paiCaixinha.style.opacity = '100%'
+            divAtual.style.display = 'none'
         };
         return bloqueiaTab(caixinha, index + 1);
     };
