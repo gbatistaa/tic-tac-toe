@@ -26,6 +26,12 @@
         }
 }
 
+@keyframes velha {
+    from {opacity: 100%;}
+    
+    to  {opacity: 25%;
+        }
+}
 
 .corte-vitoria{
     background-color: #11d368;
