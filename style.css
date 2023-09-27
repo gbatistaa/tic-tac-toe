@@ -43,16 +43,10 @@
     to  {opacity: 100%;}
 }
 
-
-
-.corte-vitoria{
-    background-color: #11d368;
-    height: 10px;
-    width: 0px;
-    position: absolute;
-    z-index: 1;
-    border-radius: 20px;
-    filter: brightness(1.5) drop-shadow(0 0 5px #11d368);
+@keyframes liberaTodos {
+    from {opacity: 20%;}
+    
+    to  {opacity: 100%;}
 }
 
 @keyframes x {
@@ -90,9 +84,21 @@
 }
 
 @font-face {
-    font-family: 'Roboto Mono';
+    font-family: 'Kalil';
     src: url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 }
+
+.corte-vitoria{
+    background-color: #11d368;
+    height: 10px;
+    width: 0px;
+    position: absolute;
+    z-index: 1;
+    border-radius: 20px;
+    filter: brightness(1.5) drop-shadow(0 0 5px #11d368);
+}
+
+
 
 *{
     margin: 0;
