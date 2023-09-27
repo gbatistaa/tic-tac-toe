@@ -117,6 +117,10 @@ body{
     background: linear-gradient(45deg, #0b0033 0%, #450045 100%);
 }
 
+a{
+    color: #fff;
+}
+
 #tabuleiro-principal{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
