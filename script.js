@@ -20,35 +20,35 @@ const caixasGrandes = document.getElementsByClassName('caixa-grande')
 const adicionarEvento = (caixaP, index = 0) => { 
     if (index === caixaP.length) return true;
     else  {
-        const elemento = caixaP[index];
-        elemento.addEventListener('click', () => {
-            const vez = elemento.classList[2];
-            const subTab = elemento.parentNode
+        const caixinha = caixaP[index];
+        caixinha.addEventListener('click', () => {
+            const vez = caixinha.classList[2];
+            const subTab = caixinha.parentNode 
             if (vez === 'X') {
                 const simboloClone = xSimbolo.cloneNode(true); //com appendchild o X ou o O são tranferidos para a proxima casa selecionada e não duplicados
                 adicionarClasse('x-simbolo')(simboloClone);    //então é criado o simboloclone, para o X ou O ficarem nos lugares após
-                elemento.appendChild(simboloClone);            //a próxima escolha
+                caixinha.appendChild(simboloClone);            //a próxima escolha
                 mudaVezX(caixasPequenas);
-                removerClasse(elemento.classList[2])(elemento)
-                adicionarClasse('X-add')(elemento);            //identifica um quadrante selecionado
-                vitoriaParcial(subTab);           // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
+                removerClasse(caixinha.classList[2])(caixinha)
+                adicionarClasse('X-add')(caixinha);             //identifica um quadrante selecionado
+                vitoriaParcial(subTab);                         // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
                 
-                tracoVitoria(elemento)(vitoriaParcial(subTab)) 
-                bloqueiaTab(elemento);     
-                liberaTabs(caixasGrandes)                   
+                tracoVitoria(caixinha)(vitoriaParcial(subTab)) 
+                bloqueiaTab(caixinha);     
+                //liberaTabs(caixasGrandes)                   
 
             } else if (vez === 'O'){
                 const simboloClone = oSimbolo.cloneNode(true);
                 adicionarClasse('o-simbolo')(simboloClone);
-                elemento.appendChild(simboloClone);
+                caixinha.appendChild(simboloClone);
                 mudaVezO(caixasPequenas);
-                removerClasse(elemento.classList[2])(elemento);
-                adicionarClasse('O-add')(elemento);             // identifica um quadrante selecioando 
+                removerClasse(caixinha.classList[2])(caixinha);
+                adicionarClasse('O-add')(caixinha);             // identifica um quadrante selecioando 
                 vitoriaParcial(subTab);                         // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
     
-                tracoVitoria(elemento)(vitoriaParcial(subTab))  
-                bloqueiaTab(elemento);   
-                liberaTabs(caixasGrandes)                        
+                tracoVitoria(caixinha)(vitoriaParcial(subTab))  
+                bloqueiaTab(caixinha);   
+                //liberaTabs(caixasGrandes)                        
             }
         });
         adicionarEvento(caixaP, index + 1);
@@ -133,6 +133,18 @@ const temSimbolo = (objClasse, index = 0) => {
 // Função de estruturas condicionais para analisar qual tipo de vitória, entre as 8 combinações possíveis
 // Caso não bata com nenhuma das 8 e todos as caixinhas tenham simbolos a função irá retornar false, indicando velha (empate)
 
+const xAnima1 = xSimbolo.cloneNode();
+xAnima1.style.rotate = '45deg'
+xAnima1.style.position = 'absolute'
+xAnima1.style.zIndex = '4'
+xAnima1.style.height = '45px'
+const xAnima2 = xSimbolo.cloneNode();
+xAnima2.style.rotate = '-45deg'
+xAnima2.style.position = 'absolute'
+xAnima2.style.zIndex = '3'
+xAnima2.style.height = '45px'
+const oAnima = document.createElement ('svg');
+
 const vitoriaParcial = (subTab) => {
     const caixinhas = subTab.children;
     const simbolos = {
@@ -146,9 +158,10 @@ const vitoriaParcial = (subTab) => {
         c8: caixinhas[7].innerHTML,
         c9: caixinhas[8].innerHTML,
     };
+
     
     if (simbolos.c1 === simbolos.c2 && simbolos.c1 === simbolos.c3 && simbolos.c1 !== "") {
-        return 1
+        return 1;
     } else if (simbolos.c4 === simbolos.c5 && simbolos.c4 === simbolos.c6 && simbolos.c4 !== "") {
         return 2
     } else if (simbolos.c7 === simbolos.c8 && simbolos.c7 === simbolos.c9 && simbolos.c7 !== "") {
@@ -167,18 +180,8 @@ const vitoriaParcial = (subTab) => {
     else return null;
 };
 
-const xAnima1 = xSimbolo.cloneNode();
-xAnima1.style.rotate = '45deg'
-xAnima1.style.position = 'absolute'
-xAnima1.style.zIndex = '4'
-xAnima1.style.height = '45px'
-const xAnima2 = xSimbolo.cloneNode();
-xAnima2.style.rotate = '-45deg'
-xAnima2.style.position = 'absolute'
-xAnima2.style.zIndex = '3'
-xAnima2.style.height = '45px'
-const oAnima = document.createElement ('svg');
-
+  
+// Função que analisa qual tipo de vitória, e realiza a animação do traço
 const tracoVitoria = (caixinha) => (tipoVitoria) => {
     const tabuleirinho = caixinha.parentElement;
     const caixaGrande = tabuleirinho.parentElement;
@@ -285,12 +288,12 @@ const bloqueiaTab = (caixinha, index = 0) => {
     const tabAtual = subTabuleiros[index];
     const posicaoCaixinha = caixinha.classList[1];
     const posicaoTabuleiro = tabAtual.classList[1];
-    const divAtual = divsBloqueio[index];
+    const bloqueioAtual = divsBloqueio[index];
     if (index === subTabuleiros.length) return undefined;
     else {
         if (vitoriaParcial(paiCaixinha) !== null && vitoriaParcial(paiCaixinha) !== false && typeof vitoriaParcial(tabAtual) === 'number'){
             if (tabAtual.classList[1] !== 'X-vitoria') {
-                divAtual.style.display = 'none'
+                bloqueioAtual.style.display = 'none'
                 setInterval(() => {
                     paiCaixinha.style.display = 'none'
                 }, 5000)
@@ -298,11 +301,11 @@ const bloqueiaTab = (caixinha, index = 0) => {
             paiCaixinha.style.animation = 'someTab 1s ease-out 3.1s forwards'
         } else if (posicaoCaixinha !== posicaoTabuleiro && typeof vitoriaParcial(tabAtual) !== 'number') {
             tabAtual.style.animation = 'addBloq 1s ease-out forwards'
-            divAtual.style.display = 'inline'
+            bloqueioAtual.style.display = 'inline'
         } else if (posicaoCaixinha === posicaoTabuleiro && vitoriaParcial(tabAtual) !== false) {
             tabAtual.style.animation = 'tiraBloq 1s ease-out forwards'
             paiCaixinha.style.opacity = '100%'
-            divAtual.style.display = 'none'
+            bloqueioAtual.style.display = 'none'
         };
         return bloqueiaTab(caixinha, index + 1);
     };
