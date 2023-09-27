@@ -281,16 +281,15 @@ const liberaTabs = (tabuleiro, index = 0) => {
 
 const bloqueiaTab = (caixinha, index = 0) => {
     const paiCaixinha = caixinha.parentElement
+    const caixaGrandeClicada = paiCaixinha.parentElement
     const tabAtual = subTabuleiros[index];
     const posicaoCaixinha = caixinha.classList[1];
     const posicaoTabuleiro = tabAtual.classList[1];
     const divAtual = divsBloqueio[index];
-    const paiAtual = tabAtual.parentElement
     if (index === subTabuleiros.length) return undefined;
     else {
-        if (vitoriaParcial(paiCaixinha) !== null && vitoriaParcial(paiCaixinha) !== false && typeof vitoriaParcial(tabAtual) !== 'number'){
+        if (vitoriaParcial(paiCaixinha) !== null && vitoriaParcial(paiCaixinha) !== false && typeof vitoriaParcial(tabAtual) === 'number'){
             if (tabAtual.classList[1] !== 'X-vitoria') {
-                tabAtual.style.animation = 'liberaTodos 2s ease-out forwards'
                 divAtual.style.display = 'none'
                 setInterval(() => {
                     paiCaixinha.style.display = 'none'
