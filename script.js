@@ -194,7 +194,7 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
         switch (tipoVitoria) {
             case 1:
                 traco.style.translate = '0px -58px'
-                traco.style.animation = 'tracoHorizVert 3s ease-out forwards'
+                traco.style.animation = 'tracoHorizVert 3.2s ease-out forwards'
                 adicionarClasse('X-vitoria')(caixaGrande)
                 animacaoX()
                 break;
@@ -245,35 +245,35 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
             case false:
                 tabuleirinho.style.animation = 'velha 2s ease-out forwards'
                 tabuleirinho.style.cursor = 'not-allowed'
+                adicionarClasse('velha')(caixaGrande)
                 break;
         }
     }
 }
 
-btReiniciar.addEventListener('click', () =>{
-    reiniciar(caixasPequenas)
-})
+// btReiniciar.addEventListener('click', () =>{
+//     reiniciar(caixasPequenas)
+// })
 
-const reiniciar = (elemento, index = 0) => {
-    if (index === elemento.length) return true;
-    else {
-        removerClasse('X-add')(elemento[index]);
-        removerClasse('O-add')(elemento[index]);
-        removerClasse('O')(elemento[index]);    
-        adicionarClasse('X')(elemento[index]);
-        liberaTabs(divsBloqueio);
-        elemento[index].innerHTML = "";
-        return reiniciar(elemento,index + 1);
-    };
-};
+// const reiniciar = (elemento, index = 0) => {
+//     if (index === elemento.length) return true;
+//     else {
+//         removerClasse('X-add')(elemento[index]);
+//         removerClasse('O-add')(elemento[index]);
+//         removerClasse('O')(elemento[index]);    
+//         adicionarClasse('X')(elemento[index]);
+//         liberaTabs(divsBloqueio);
+//         elemento[index].innerHTML = "";
+//         return reiniciar(elemento,index + 1);
+//     };
+// };
 
 const liberaTabs = (tabuleiro, index = 0) => {
     const tabAtual = tabuleiro[index];
     if (index === tabAtual.length) return undefined;
     else {
-        
         if (tabAtual.classList[1] !== 'X-vitoria') {
-            tabAtual.style.opacity = '100%'
+            tabAtual.style.animation = 'tiraBloq 2s ease-out forwards'
         }
         return liberaTabs(tabuleiro, index + 1);
     };
@@ -288,10 +288,13 @@ const bloqueiaTab = (caixinha, index = 0) => {
     const paiAtual = tabAtual.parentElement
     if (index === subTabuleiros.length) return undefined;
     else {
-        if (vitoriaParcial(paiCaixinha) !== null){
+        if (vitoriaParcial(paiCaixinha) !== null && vitoriaParcial(paiCaixinha) !== false && typeof vitoriaParcial(tabAtual) !== 'number'){
             if (tabAtual.classList[1] !== 'X-vitoria') {
-                divAtual.style.display = 'inline'
-                paiAtual.style.opacity = '100%'
+                tabAtual.style.animation = 'liberaTodos 2s ease-out forwards'
+                divAtual.style.display = 'none'
+                setInterval(() => {
+                    paiCaixinha.style.display = 'none'
+                }, 5000)
             }
             paiCaixinha.style.animation = 'someTab 1s ease-out 3.1s forwards'
         } else if (posicaoCaixinha !== posicaoTabuleiro && typeof vitoriaParcial(tabAtual) !== 'number') {
