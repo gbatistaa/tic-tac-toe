@@ -35,7 +35,7 @@ const adicionarEvento = (caixaP, index = 0) => {
                 
                 tracoVitoria(caixinha)(vitoriaParcial(subTab));
                 bloqueiaTab(caixinha);     
-                liberaTabs(caixasGrandes);                
+                //liberaTabs(caixasGrandes);                
 
             } else if (vez === 'O'){
                 const simboloClone = oSimbolo.cloneNode(true);
@@ -48,7 +48,7 @@ const adicionarEvento = (caixaP, index = 0) => {
     
                 tracoVitoria(caixinha)(vitoriaParcial(subTab))  
                 bloqueiaTab(caixinha);   
-                liberaTabs(caixasGrandes)                        
+                //liberaTabs(caixasGrandes)                        
             }
         });
         adicionarEvento(caixaP, index + 1);
@@ -191,7 +191,8 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
         xAnima1.style.animation = 'x 1s ease-out forwards'
         xAnima2.style.animation = 'x 1s ease-out 0.5s forwards'
         caixaGrande.appendChild(xAnima1.cloneNode())
-        caixaGrande.appendChild(xAnima2.cloneNode())}, 1900)
+        caixaGrande.appendChild(xAnima2.cloneNode())
+        tabuleirinho.style.display = 'none'}, 1900)
     }
     if (tipoVitoria < 9 && tipoVitoria !== null){
         switch (tipoVitoria) {
@@ -206,12 +207,14 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
                 animacaoX()
+                adicionarClasse('X-vitoria')(caixaGrande)
                 break;
             case 3:
                 traco.style.translate = '0px 58px'
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
                 animacaoX()
+                adicionarClasse('X-vitoria')(caixaGrande)
                 break;
             case 4:
                 traco.style.rotate = '90deg'
@@ -219,6 +222,7 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
                 animacaoX()
+                adicionarClasse('X-vitoria')(caixaGrande)
                 break;
             case 5:
                 traco.style.rotate = '90deg'
@@ -226,6 +230,7 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
                 animacaoX()
+                adicionarClasse('X-vitoria')(caixaGrande)
                 break;
             case 6:
                 traco.style.rotate = '90deg'
@@ -233,18 +238,21 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
                 animacaoX()
+                adicionarClasse('X-vitoria')(caixaGrande)
                 break;
             case 7:
                 traco.style.rotate = '45deg'
                 traco.style.animation = 'tracoDiagonal 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1.5s ease-out 1s forwards'
                 animacaoX()
+                adicionarClasse('X-vitoria')(caixaGrande)
                 break;
             case 8:
                 traco.style.rotate = '-45deg'
                 traco.style.animation = 'tracoDiagonal 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1.5s ease-out 1s forwards'
                 animacaoX()
+                adicionarClasse('X-vitoria')(caixaGrande)
                 break;
             case false:
                 tabuleirinho.style.animation = 'velha 1.5s ease-out forwards'
@@ -274,10 +282,12 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
 
 const liberaTabs = (subTabuleiros, index = 0) => {
     const tabAtual = subTabuleiros[index];
+    const bloqueioAtual = divsBloqueio[index];
     if (index === tabAtual.length) return undefined;
     else {
-        if (tabAtual.classList.contains('X-vitoria') === false && tabAtual.classList.contains('O-vitoria') === false) {
+        if (tabAtual.classList.contains('X-vitoria') === false && tabAtual.classList.contains('O-vitoria') === false && tabAtual.classList.contains('velha') === false) {
             tabAtual.style.animation = 'tiraBloq 2s ease-out forwards';
+            bloqueioAtual.style.display = 'none'
         }
     };
     console.log(index)
@@ -325,7 +335,7 @@ const bloqueiaTab = (caixinha, index = 0) => {
             bloqueioAtual.style.display = 'none'
             console.log(posicaoTabuleiro)
         } else if (posicaoCaixinha === posicaoTabuleiro) {
-            if (caixaGrandeAtual.classList.contains('X-vitoria') || caixaGrandeAtual.classList.contains('O-vitoria')) {
+            if (caixaGrandeAtual.classList.contains('X-vitoria') || caixaGrandeAtual.classList.contains('O-vitoria') || caixaGrandeAtual.classList.contains('velha')) {
                 liberaTabs(subTabuleiros);
             };
         };
