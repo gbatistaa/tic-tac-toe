@@ -63,7 +63,7 @@
 }
 
 
-@keyframes drawCircle {
+@keyframes o {
     0% {
       stroke-dasharray: 0 722; /* Começa sem traço, termina com o círculo completo */
     }
@@ -79,14 +79,14 @@
     opacity: 100%;
   }
   
-  .circle {
+  .circulo {
     width: 100%;
     height: 100%;
     fill: transparent;
     stroke: #0099ff;
     stroke-width: 45px; /* Ajuste a espessura da circunferência aqui */
     stroke-dasharray: 0 722; /* Começa sem traço, termina com o círculo completo */
-    animation: drawCircle 2.5s ease-out forwards;
+    animation: o 2.5s ease-out forwards;
     filter: brightness(1.5) drop-shadow(0 0 5px #0099ff);
   }
   
