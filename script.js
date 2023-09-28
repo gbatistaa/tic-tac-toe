@@ -283,15 +283,15 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
 const liberaTabs = (subTabuleiros, index = 0) => {
     const tabAtual = subTabuleiros[index];
     const bloqueioAtual = divsBloqueio[index];
+    const caixaGrandeAtual = tabAtual.parentElement;
     if (index === tabAtual.length) return undefined;
     else {
-        if (tabAtual.classList.contains('X-vitoria') === false && tabAtual.classList.contains('O-vitoria') === false && tabAtual.classList.contains('velha') === false) {
+        if (caixaGrandeAtual.classList.contains('X-vitoria') === false && caixaGrandeAtual.classList.contains('O-vitoria') === false && caixaGrandeAtual.classList.contains('velha') === false) {
             tabAtual.style.animation = 'tiraBloq 2s ease-out forwards';
             bloqueioAtual.style.display = 'none'
         }
+        return liberaTabs(subTabuleiros, index + 1);
     };
-    console.log(index)
-    return liberaTabs(subTabuleiros, index + 1);
 };
 
 
@@ -307,6 +307,8 @@ const bloqueiaTab = (caixinha, index = 0) => {
     const posicaoCaixinha = caixinha.classList[1]; // É classe correspondente a posição da caixinha clicada
     
     const posicaoTabuleiro = subTabAtual.classList[1]; // É a posição do subtabuleiro analisado pela recursividade (um por um)
+
+    const posicaoTabuleiroClicado = subTabClicado.classList[1]; // É a posição do subtabuleiro da caixinha clicada
     
     const bloqueioAtual = divsBloqueio[index]; // É a div de bloqueio analisada pela recursividade uma a uma
     
@@ -320,20 +322,24 @@ const bloqueiaTab = (caixinha, index = 0) => {
                 setTimeout(() => {
                     subTabClicado.style.display = 'none'
                 }, 5000)
-            }
-
-            // Condição 
+            } if (posicaoCaixinha === posicaoTabuleiroClicado) {
+                liberaTabs(subTabuleiros);
+            };
+            
+            // Condição ativada na recursividade quando a posição da caixinha clicada for diferente do subtabuleiro analisado
+            // e também nesse subtabuleiro não tiver vitória ocorrida
         } else if (posicaoCaixinha !== posicaoTabuleiro && typeof vitoriaParcial(subTabAtual) !== 'number') {
             subTabAtual.style.animation = 'addBloq 1s ease-out forwards'
             bloqueioAtual.style.display = 'inline'
+            console.log(`igual a ${posicaoTabuleiro}`);
 
             // Condição acionada quando a posição da caixinha clicada for igual a posição do tabuleiro analisado pelo recursividade
-            // E quando o subtabuleiro analisado não tiver velha e tiver ocorrido uma vitória no subtabuleiro analisado
+            // E quando o subtabuleiro analisado está no meio do jogo
         } else if (posicaoCaixinha === posicaoTabuleiro && vitoriaParcial(subTabAtual) === null) {
             subTabAtual.style.animation = 'tiraBloq 1s ease-out forwards'
             subTabClicado.style.opacity = '100%'
             bloqueioAtual.style.display = 'none'
-            console.log(posicaoTabuleiro)
+
         } else if (posicaoCaixinha === posicaoTabuleiro) {
             if (caixaGrandeAtual.classList.contains('X-vitoria') || caixaGrandeAtual.classList.contains('O-vitoria') || caixaGrandeAtual.classList.contains('velha')) {
                 liberaTabs(subTabuleiros);
