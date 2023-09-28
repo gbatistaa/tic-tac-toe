@@ -159,23 +159,81 @@ const vitoriaParcial = (subTab) => {
         c9: caixinhas[8].innerHTML,
     };
 
-    
+    const classeC1 = caixinhas[0].classList;
+    const classeC2 = caixinhas[1].classList;
+    const classeC3 = caixinhas[2].classList;
+    const classeC4 = caixinhas[3].classList;
+    const classeC5 = caixinhas[4].classList;
+    const classeC6 = caixinhas[5].classList;
+    const classeC7 = caixinhas[6].classList;
+    const classeC8 = caixinhas[7].classList;
+    const classeC9 = caixinhas[8].classList;
+
+    // console.log(classeC1.contains('X-add'))
     if (simbolos.c1 === simbolos.c2 && simbolos.c1 === simbolos.c3 && simbolos.c1 !== "") {
-        return 1;
+        if (classeC1.contains('X-add')) {
+            console.log('AQUI TEM X')
+            return 1;
+        } else if (classeC1.contains('O-add')) {
+            console.log('AQUI TEM O')
+            return -1;
+        }
     } else if (simbolos.c4 === simbolos.c5 && simbolos.c4 === simbolos.c6 && simbolos.c4 !== "") {
-        return 2
+        if (classeC4.contains('X-add')) {
+            console.log('AQUI TEM X')
+            return 2;
+        } else if (classeC4.contains('O-add')) {
+            console.log('AQUI TEM O')
+            return -2;
+        }
     } else if (simbolos.c7 === simbolos.c8 && simbolos.c7 === simbolos.c9 && simbolos.c7 !== "") {
-        return 3
+        if (classeC7.contains('X-add')) {
+            console.log('AQUI TEM X')
+            return 3;
+        } else if (classeC7.contains('O-add')) {
+            console.log('AQUI TEM O')
+            return -3;
+        }
     } else if (simbolos.c1 === simbolos.c4 && simbolos.c1 === simbolos.c7 && simbolos.c1 !== "") {
-        return 4
+        if (classeC1.contains('X-add')) {
+            console.log('AQUI TEM X')
+            return 4;
+        } else if (classeC1.contains('O-add')) {
+            console.log('AQUI TEM O')
+            return -4;
+        }
     } else if (simbolos.c2 === simbolos.c5 && simbolos.c2 === simbolos.c8 && simbolos.c2 !== "") {
-        return 5
+        if (classeC2.contains('X-add')) {
+            console.log('AQUI TEM X')
+            return 5;
+        } else if (classeC2.contains('O-add')) {
+            console.log('AQUI TEM O')
+            return -5;
+        }
     } else if (simbolos.c3 === simbolos.c6 && simbolos.c3 === simbolos.c9 && simbolos.c3 !== "") {
-        return 6
+        if (classeC3.contains('X-add')) {
+            console.log('AQUI TEM X')
+            return 6;
+        } else if (classeC3.contains('O-add')) {
+            console.log('AQUI TEM O')
+            return -6;
+        }
     } else if (simbolos.c1 === simbolos.c5 && simbolos.c1 === simbolos.c9 && simbolos.c1 !== "") {
-        return 7
+        if (classeC1.contains('X-add')) {
+            console.log('AQUI TEM X')
+            return 7;
+        } else if (classeC1.contains('O-add')) {
+            console.log('AQUI TEM O')
+            return -7;
+        }
     } else if (simbolos.c3 === simbolos.c5 && simbolos.c3 === simbolos.c7 && simbolos.c3 !== "") {
-        return 8
+        if (classeC3.contains('X-add')) {
+            console.log('AQUI TEM X')
+            return 8;
+        } else if (classeC3.contains('O-add')) {
+            console.log('AQUI TEM O')
+            return -8;
+        }
     } else if (temSimbolo(caixinhas) === true) return false;
     else return null;
 };
@@ -253,6 +311,64 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
                 tabuleirinho.style.animation = 'someTab 1.5s ease-out 1s forwards'
                 animacaoX()
                 adicionarClasse('X-vitoria')(caixaGrande)
+                break;
+            case -1:
+                traco.style.translate = '0px -58px'
+                traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
+                adicionarClasse('O-vitoria')(caixaGrande)
+                animacaoX()
+                break;
+            case -2:
+                traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
+                animacaoX()
+                adicionarClasse('O-vitoria')(caixaGrande)
+                break;
+            case -3:
+                traco.style.translate = '0px 58px'
+                traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
+                animacaoX()
+                adicionarClasse('O-vitoria')(caixaGrande)
+                break;
+            case -4:
+                traco.style.rotate = '90deg'
+                traco.style.translate = '-58px 0px'
+                traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
+                animacaoX()
+                adicionarClasse('O-vitoria')(caixaGrande)
+                break;
+            case -5:
+                traco.style.rotate = '90deg'
+                traco.style.translate = '0px 0px'
+                traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
+                animacaoX()
+                adicionarClasse('O-vitoria')(caixaGrande)
+                break;
+            case -6:
+                traco.style.rotate = '90deg'
+                traco.style.translate = '58px 0px'
+                traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
+                animacaoX()
+                adicionarClasse('O-vitoria')(caixaGrande)
+                break;
+            case -7:
+                traco.style.rotate = '45deg'
+                traco.style.animation = 'tracoDiagonal 1.5s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 1.5s ease-out 1s forwards'
+                animacaoX()
+                adicionarClasse('O-vitoria')(caixaGrande)
+                break;
+            case -8:
+                traco.style.rotate = '-45deg'
+                traco.style.animation = 'tracoDiagonal 1.5s ease-out forwards'
+                tabuleirinho.style.animation = 'someTab 1.5s ease-out 1s forwards'
+                animacaoX()
+                adicionarClasse('O-vitoria')(caixaGrande)
                 break;
             case false:
                 tabuleirinho.style.animation = 'velha 1.5s ease-out forwards'
