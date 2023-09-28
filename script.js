@@ -145,22 +145,25 @@ xAnima2.style.zIndex = '3'
 xAnima2.style.height = '45px'
 
 const colocaO = () => {
-    const divContainer = document.createElement('div')
-    adicionarClasse('circle-container')(divContainer);
-    
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.classList.add('circle');
-    
-    const oAnima = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    oAnima.setAttribute('cx', '50%');
-    oAnima.setAttribute('cy', '50%');
-    oAnima.setAttribute('r', '40%');
-    
-    svg.appendChild(oAnima)
-    divContainer.appendChild(svg)
-    const caixaGrande = document.querySelector('.caixa-grande.O-vitoria');
-    caixaGrande.appendChild(divContainer);
+    setTimeout(() => {
+        const divContainer = document.createElement('div')
+        adicionarClasse('circle-container')(divContainer);
+        
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.classList.add('circle');
+        
+        const oAnima = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        oAnima.setAttribute('cx', '50%');
+        oAnima.setAttribute('cy', '50%');
+        oAnima.setAttribute('r', '78px');
+        
+        svg.appendChild(oAnima)
+        divContainer.appendChild(svg)
+        const caixaGrande = document.querySelector('.caixa-grande.O-vitoria');
+        caixaGrande.appendChild(divContainer);}, 1700)
 }
+
+    
 
 const vitoriaParcial = (subTab) => {
     const caixinhas = subTab.children;
