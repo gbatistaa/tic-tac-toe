@@ -144,24 +144,7 @@ xAnima2.style.position = 'absolute'
 xAnima2.style.zIndex = '3'
 xAnima2.style.height = '45px'
 
-const colocaO = () => {
-    setTimeout(() => {
-        const divContainer = document.createElement('div')
-        adicionarClasse('circle-container')(divContainer);
-        
-        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        svg.classList.add('circle');
-        
-        const oAnima = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        oAnima.setAttribute('cx', '50%');
-        oAnima.setAttribute('cy', '50%');
-        oAnima.setAttribute('r', '78px');
-        
-        svg.appendChild(oAnima)
-        divContainer.appendChild(svg)
-        const caixaGrande = document.querySelector('.caixa-grande.O-vitoria');
-        caixaGrande.appendChild(divContainer);}, 1700)
-}
+
 
     
 
@@ -189,7 +172,6 @@ const vitoriaParcial = (subTab) => {
     const classeC8 = caixinhas[7].classList;
     const classeC9 = caixinhas[8].classList;
 
-    // console.log(classeC1.contains('X-add'))
     if (simbolos.c1 === simbolos.c2 && simbolos.c1 === simbolos.c3 && simbolos.c1 !== "") {
         if (classeC1.contains('X-add')) {
             return 1;
@@ -256,14 +238,32 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
         caixaGrande.appendChild(xAnima2.cloneNode())
         tabuleirinho.style.display = 'none'}, 1900)
     }
+    const colocaO = () => {
+        setTimeout(() => {
+            const divContemBola = document.createElement('div')
+            adicionarClasse('circle-container')(divContemBola);
+            
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.classList.add('circulo');
+            
+            const oAnima = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            oAnima.setAttribute('cx', '50%');
+            oAnima.setAttribute('cy', '50%');
+            oAnima.setAttribute('r', '78px');
+            
+            svg.appendChild(oAnima)
+            divContemBola.appendChild(svg)
+            const cloneBola = divContemBola.cloneNode(true)
+            caixaGrande.appendChild(cloneBola);}, 1700)
+    }
     if (tipoVitoria < 9 && tipoVitoria !== null){
         switch (tipoVitoria) {
             case 1:
                 traco.style.translate = '0px -58px'
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
-                adicionarClasse('X-vitoria')(caixaGrande)
                 animacaoX()
+                adicionarClasse('X-vitoria')(caixaGrande)
                 break;
             case 2:
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
@@ -320,8 +320,8 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
                 traco.style.translate = '0px -58px'
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
-                adicionarClasse('O-vitoria')(caixaGrande)
                 colocaO()
+                adicionarClasse('O-vitoria')(caixaGrande)
                 break;
             case -2:
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
@@ -437,7 +437,6 @@ const bloqueiaTab = (caixinha, index = 0) => {
 
         // Condição ativada se ocorrer vitória no subtabuleiro clicado:
         if (typeof vitoriaParcial(subTabClicado) === "number" && typeof vitoriaParcial(subTabAtual) === "number") {
-            console.log(`igual a ${posicaoTabuleiro}`);
             if (caixaGrandeClicada.classList[1] === 'X-vitoria') {
                 bloqueioAtual.style.display = 'inline'
                 setTimeout(() => {
