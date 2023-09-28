@@ -172,66 +172,50 @@ const vitoriaParcial = (subTab) => {
     // console.log(classeC1.contains('X-add'))
     if (simbolos.c1 === simbolos.c2 && simbolos.c1 === simbolos.c3 && simbolos.c1 !== "") {
         if (classeC1.contains('X-add')) {
-            console.log('AQUI TEM X')
             return 1;
         } else if (classeC1.contains('O-add')) {
-            console.log('AQUI TEM O')
             return -1;
         }
     } else if (simbolos.c4 === simbolos.c5 && simbolos.c4 === simbolos.c6 && simbolos.c4 !== "") {
         if (classeC4.contains('X-add')) {
-            console.log('AQUI TEM X')
             return 2;
         } else if (classeC4.contains('O-add')) {
-            console.log('AQUI TEM O')
             return -2;
         }
     } else if (simbolos.c7 === simbolos.c8 && simbolos.c7 === simbolos.c9 && simbolos.c7 !== "") {
         if (classeC7.contains('X-add')) {
-            console.log('AQUI TEM X')
             return 3;
         } else if (classeC7.contains('O-add')) {
-            console.log('AQUI TEM O')
             return -3;
         }
     } else if (simbolos.c1 === simbolos.c4 && simbolos.c1 === simbolos.c7 && simbolos.c1 !== "") {
         if (classeC1.contains('X-add')) {
-            console.log('AQUI TEM X')
             return 4;
         } else if (classeC1.contains('O-add')) {
-            console.log('AQUI TEM O')
             return -4;
         }
     } else if (simbolos.c2 === simbolos.c5 && simbolos.c2 === simbolos.c8 && simbolos.c2 !== "") {
         if (classeC2.contains('X-add')) {
-            console.log('AQUI TEM X')
             return 5;
         } else if (classeC2.contains('O-add')) {
-            console.log('AQUI TEM O')
             return -5;
         }
     } else if (simbolos.c3 === simbolos.c6 && simbolos.c3 === simbolos.c9 && simbolos.c3 !== "") {
         if (classeC3.contains('X-add')) {
-            console.log('AQUI TEM X')
             return 6;
         } else if (classeC3.contains('O-add')) {
-            console.log('AQUI TEM O')
             return -6;
         }
     } else if (simbolos.c1 === simbolos.c5 && simbolos.c1 === simbolos.c9 && simbolos.c1 !== "") {
         if (classeC1.contains('X-add')) {
-            console.log('AQUI TEM X')
             return 7;
         } else if (classeC1.contains('O-add')) {
-            console.log('AQUI TEM O')
             return -7;
         }
     } else if (simbolos.c3 === simbolos.c5 && simbolos.c3 === simbolos.c7 && simbolos.c3 !== "") {
         if (classeC3.contains('X-add')) {
-            console.log('AQUI TEM X')
             return 8;
         } else if (classeC3.contains('O-add')) {
-            console.log('AQUI TEM O')
             return -8;
         }
     } else if (temSimbolo(caixinhas) === true) return false;
@@ -433,29 +417,29 @@ const bloqueiaTab = (caixinha, index = 0) => {
 
         // Condição ativada se ocorrer vitória no subtabuleiro clicado:
         if (typeof vitoriaParcial(subTabClicado) === "number" && typeof vitoriaParcial(subTabAtual) === "number") {
+            console.log(`igual a ${posicaoTabuleiro}`);
             if (caixaGrandeClicada.classList[1] === 'X-vitoria') {
                 bloqueioAtual.style.display = 'inline'
                 setTimeout(() => {
                     subTabClicado.style.display = 'none'
                 }, 5000)
-            } if (posicaoCaixinha === posicaoTabuleiroClicado) {
+            } if (posicaoCaixinha === posicaoTabuleiroClicado || posicaoCaixinha === posicaoTabuleiro) {
                 liberaTabs(subTabuleiros);
             };
             
             // Condição ativada na recursividade quando a posição da caixinha clicada for diferente do subtabuleiro analisado
             // e também nesse subtabuleiro não tiver vitória ocorrida
         } else if (posicaoCaixinha !== posicaoTabuleiro && typeof vitoriaParcial(subTabAtual) !== 'number') {
-            subTabAtual.style.animation = 'addBloq 1s ease-out forwards'
-            bloqueioAtual.style.display = 'inline'
-            console.log(`igual a ${posicaoTabuleiro}`);
-
+                subTabAtual.style.animation = 'addBloq 1s ease-out forwards';
+                bloqueioAtual.style.display = 'inline';
+            
             // Condição acionada quando a posição da caixinha clicada for igual a posição do tabuleiro analisado pelo recursividade
             // E quando o subtabuleiro analisado está no meio do jogo
         } else if (posicaoCaixinha === posicaoTabuleiro && vitoriaParcial(subTabAtual) === null) {
             subTabAtual.style.animation = 'tiraBloq 1s ease-out forwards'
             subTabClicado.style.opacity = '100%'
             bloqueioAtual.style.display = 'none'
-
+            
         } else if (posicaoCaixinha === posicaoTabuleiro) {
             if (caixaGrandeAtual.classList.contains('X-vitoria') || caixaGrandeAtual.classList.contains('O-vitoria') || caixaGrandeAtual.classList.contains('velha')) {
                 liberaTabs(subTabuleiros);
