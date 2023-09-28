@@ -143,7 +143,24 @@ xAnima2.style.rotate = '-45deg'
 xAnima2.style.position = 'absolute'
 xAnima2.style.zIndex = '3'
 xAnima2.style.height = '45px'
-const oAnima = document.createElement ('svg');
+
+const colocaO = () => {
+    const divContainer = document.createElement('div')
+    adicionarClasse('circle-container')(divContainer);
+    
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.classList.add('circle');
+    
+    const oAnima = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    oAnima.setAttribute('cx', '50%');
+    oAnima.setAttribute('cy', '50%');
+    oAnima.setAttribute('r', '40%');
+    
+    svg.appendChild(oAnima)
+    divContainer.appendChild(svg)
+    const caixaGrande = document.querySelector('.caixa-grande.O-vitoria');
+    caixaGrande.appendChild(divContainer);
+}
 
 const vitoriaParcial = (subTab) => {
     const caixinhas = subTab.children;
@@ -301,19 +318,19 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
                 adicionarClasse('O-vitoria')(caixaGrande)
-                animacaoX()
+                colocaO()
                 break;
             case -2:
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
-                animacaoX()
+                colocaO()
                 adicionarClasse('O-vitoria')(caixaGrande)
                 break;
             case -3:
                 traco.style.translate = '0px 58px'
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
-                animacaoX()
+                colocaO()
                 adicionarClasse('O-vitoria')(caixaGrande)
                 break;
             case -4:
@@ -321,7 +338,7 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
                 traco.style.translate = '-58px 0px'
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
-                animacaoX()
+                colocaO()
                 adicionarClasse('O-vitoria')(caixaGrande)
                 break;
             case -5:
@@ -329,7 +346,7 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
                 traco.style.translate = '0px 0px'
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
-                animacaoX()
+                colocaO()
                 adicionarClasse('O-vitoria')(caixaGrande)
                 break;
             case -6:
@@ -337,21 +354,21 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
                 traco.style.translate = '58px 0px'
                 traco.style.animation = 'tracoHorizVert 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1s ease-out 1.2s forwards'
-                animacaoX()
+                colocaO()
                 adicionarClasse('O-vitoria')(caixaGrande)
                 break;
             case -7:
                 traco.style.rotate = '45deg'
                 traco.style.animation = 'tracoDiagonal 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1.5s ease-out 1s forwards'
-                animacaoX()
+                colocaO()
                 adicionarClasse('O-vitoria')(caixaGrande)
                 break;
             case -8:
                 traco.style.rotate = '-45deg'
                 traco.style.animation = 'tracoDiagonal 1.5s ease-out forwards'
                 tabuleirinho.style.animation = 'someTab 1.5s ease-out 1s forwards'
-                animacaoX()
+                colocaO()
                 adicionarClasse('O-vitoria')(caixaGrande)
                 break;
             case false:
