@@ -109,10 +109,10 @@
   
 @keyframes oFinal {
     0% {
-      stroke-dasharray: 0 722;
+      stroke-dasharray: 0 1700;
     }
     100% {
-      stroke-dasharray: 722 722;
+      stroke-dasharray: 1700 1700;
     }
 }  
   
@@ -122,15 +122,32 @@
     height: 230px;
     opacity: 100%;
 }
-  
+
+.circle-container2 {
+    width: 700px;
+    position: absolute;
+    height: 700px;
+    opacity: 100%;
+}
+
 .circulo {
     width: 100%;
     height: 100%;
     fill: transparent;
     stroke: #0099ff;
-    stroke-width: 45px; /* Ajuste a espessura da circunferência aqui */
-    stroke-dasharray: 0 722; /* Começa sem traço, termina com o círculo completo */
+    stroke-width: 45px;
+    stroke-dasharray: 0 722;
     animation: o 2s ease-out forwards;
+    filter: brightness(1.5) drop-shadow(0 0 5px #0099ff);
+}
+
+.circulao {
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+    stroke: #0099ff;
+    stroke-width: 120px;
+    animation: oFinal 2s ease-out forwards;
     filter: brightness(1.5) drop-shadow(0 0 5px #0099ff);
 }
 
