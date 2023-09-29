@@ -1,0 +1,22 @@
+{
+  "name": "tic-tac-toe-square",
+  "version": "1.0.0",
+  "description": "It's a Ultimate Tic Tac Toe, a game where you play in boards, to win in the big one.",
+  "main": "script.js",
+  "scripts": {
+    "test": "ttt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gbatistaa/tic-tac-toe.git"
+  },
+  "keywords": [
+    "ttt"
+  ],
+  "author": "Gabriel Barbosa, Davi Lira, Paulo Rugani, Matheus Nascimento",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gbatistaa/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/gbatistaa/tic-tac-toe#readme"
+}
