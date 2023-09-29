@@ -228,6 +228,7 @@ const vitoriaParcial = (subTab) => {
 const tracoVitoria = (caixinha) => (tipoVitoria) => {
     const tabuleirinho = caixinha.parentElement;
     const caixaGrande = tabuleirinho.parentElement;
+    const bloqueioAtual = caixaGrande.children[0]
     const traco = caixaGrande.children[1];
     const animacaoX = () => {
         setTimeout(() => {
@@ -256,7 +257,8 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
             caixaGrande.appendChild(cloneBola)
             tabuleirinho.style.display = 'none'}, 1700)
     }
-    if (tipoVitoria < 9 && tipoVitoria !== null){
+    if ((tipoVitoria < 9 || tipoVitoria === false) && tipoVitoria !== null){
+        bloqueioAtual.style.display = 'inline';
         switch (tipoVitoria) {
             case 1:
                 traco.style.translate = '0px -58px'
@@ -392,7 +394,6 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
                 break;
             case false:
                 tabuleirinho.style.animation = 'velha 1.5s ease-out forwards'
-                tabuleirinho.style.cursor = 'not-allowed'
                 adicionarClasse('velha')(caixaGrande)
                 break;
         }
@@ -450,36 +451,39 @@ const bloqueiaTab = (caixinha, index = 0) => {
     
     if (index === subTabuleiros.length) return undefined;
     else {
-
-        // Condição ativada se ocorrer vitória no subtabuleiro clicado:
-        if (typeof vitoriaParcial(subTabClicado) === "number" && typeof vitoriaParcial(subTabAtual) === "number") {
-            if (caixaGrandeClicada.classList[1] === 'X-vitoria') {
-                bloqueioAtual.style.display = 'inline'
-                setTimeout(() => {
-                    subTabClicado.style.display = 'none'
-                }, 5000)
-            } if (posicaoCaixinha === posicaoTabuleiroClicado || posicaoCaixinha === posicaoTabuleiro) {
-                liberaTabs(subTabuleiros);
+        if (vitoriaFinal(caixasGrandes) === null) {
+            if (typeof vitoriaParcial(subTabClicado) === "number" && typeof vitoriaParcial(subTabAtual) === "number") {
+                if (caixaGrandeClicada.classList[1] === 'X-vitoria') {
+                    bloqueioAtual.style.display = 'inline'
+                    setTimeout(() => {
+                        subTabClicado.style.display = 'none'
+                    }, 5000)
+                } if (posicaoCaixinha === posicaoTabuleiroClicado || posicaoCaixinha === posicaoTabuleiro) {
+                    liberaTabs(subTabuleiros);
+                };
+                
+                // Condição ativada na recursividade quando a posição da caixinha clicada for diferente do subtabuleiro analisado
+                // e também nesse subtabuleiro não tiver vitória ocorrida
+            } else if (posicaoCaixinha !== posicaoTabuleiro && typeof vitoriaParcial(subTabAtual) !== 'number') {
+                    subTabAtual.style.animation = 'addBloq 1s ease-out forwards';
+                    bloqueioAtual.style.display = 'inline';
+                
+                // Condição acionada quando a posição da caixinha clicada for igual a posição do tabuleiro analisado pelo recursividade
+                // E quando o subtabuleiro analisado está no meio do jogo
+            } else if (posicaoCaixinha === posicaoTabuleiro && vitoriaParcial(subTabAtual) === null) {
+                subTabAtual.style.animation = 'tiraBloq 1s ease-out forwards'
+                subTabClicado.style.opacity = '100%'
+                bloqueioAtual.style.display = 'none'
+                
+            } else if (posicaoCaixinha === posicaoTabuleiro) {
+                if (caixaGrandeAtual.classList.contains('X-vitoria') || caixaGrandeAtual.classList.contains('O-vitoria') || caixaGrandeAtual.classList.contains('velha')) {
+                    liberaTabs(subTabuleiros);
+                };
             };
-            
-            // Condição ativada na recursividade quando a posição da caixinha clicada for diferente do subtabuleiro analisado
-            // e também nesse subtabuleiro não tiver vitória ocorrida
-        } else if (posicaoCaixinha !== posicaoTabuleiro && typeof vitoriaParcial(subTabAtual) !== 'number') {
-                subTabAtual.style.animation = 'addBloq 1s ease-out forwards';
-                bloqueioAtual.style.display = 'inline';
-            
-            // Condição acionada quando a posição da caixinha clicada for igual a posição do tabuleiro analisado pelo recursividade
-            // E quando o subtabuleiro analisado está no meio do jogo
-        } else if (posicaoCaixinha === posicaoTabuleiro && vitoriaParcial(subTabAtual) === null) {
-            subTabAtual.style.animation = 'tiraBloq 1s ease-out forwards'
-            subTabClicado.style.opacity = '100%'
-            bloqueioAtual.style.display = 'none'
-            
-        } else if (posicaoCaixinha === posicaoTabuleiro) {
-            if (caixaGrandeAtual.classList.contains('X-vitoria') || caixaGrandeAtual.classList.contains('O-vitoria') || caixaGrandeAtual.classList.contains('velha')) {
-                liberaTabs(subTabuleiros);
-            };
+        } else {
+            bloqueiaFinal();
         };
+        // Condição ativada se ocorrer vitória no subtabuleiro clicado:
         return bloqueiaTab(caixinha, index + 1);
     };
 };
@@ -579,7 +583,8 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
             const cloneBola = divContemBola.cloneNode(true)
             principal.appendChild(cloneBola)}, 10400)
     }
-    if (tipoVitoria < 9 && tipoVitoria !== null){
+    if ((tipoVitoria < 9 || tipoVitoria === false) && tipoVitoria !== null){
+        tabuleiroPrincipal.style.cursor = 'not allowed';
         switch (tipoVitoria) {
             case 1:
                 tracao.style.translate = '0px 110px'
@@ -745,12 +750,13 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
 }
 
 const bloqueiaFinal = (index = 0) => {
+    console.log(index);
     const subTabAtual = subTabuleiros[index]
     const bloqueioAtual = divsBloqueio[index];
-    if (index === subTabs.length) return;
+    if (index === 9) return undefined;
     else {
         subTabAtual.style.animation = 'addBloq 1s ease-out forwards';
-        bloqueioAtual.style.display = 'inline'
-        return bloqueiaFinal(subTabs, index + 1)
+        bloqueioAtual.style.display = 'inline';
+        return bloqueiaFinal(index + 1)
     }
 }
