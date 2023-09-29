@@ -34,7 +34,7 @@ const adicionarEvento = (caixaP, index = 0) => {
                 adicionarClasse('X-add')(caixinha);             //identifica um quadrante selecionado
                                                                  // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
                 tracoVitoria(caixinha)(vitoriaParcial(subTab));
-                // bloqueiaTab(caixinha);     
+                bloqueiaTab(caixinha);     
                 //liberaTabs(caixasGrandes);                
 
             } else if (vez === 'O'){
@@ -46,7 +46,7 @@ const adicionarEvento = (caixaP, index = 0) => {
                 adicionarClasse('O-add')(caixinha);             // identifica um quadrante selecioando 
                                                                 // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
                 tracoVitoria(caixinha)(vitoriaParcial(subTab))  
-                // bloqueiaTab(caixinha);   
+                bloqueiaTab(caixinha);   
                 //liberaTabs(caixasGrandes)                        
             }
         });
@@ -586,27 +586,27 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
                 tracao.style.height = '20px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 4s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 animacaoXzao()
                 adicionarClasse('X-vitoria-final')(tabuleiroPrincipal)
-            break;
-            case 2:
+                bloqueiaFinal()
+                break;
+                case 2:
                 tracao.style.translate = '0px 350px'
                 tracao.style.height = '20px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 animacaoXzao()
                 adicionarClasse('X-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case 3:
                 tracao.style.translate = '0px 590px'
                 tracao.style.height = '20px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 animacaoXzao()
                 adicionarClasse('X-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case 4:
                 tracao.style.rotate = '90deg'
@@ -614,9 +614,9 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
                 tracao.style.translate = '-240px 360px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 animacaoXzao()
                 adicionarClasse('X-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case 5:
                 tracao.style.rotate = '90deg'
@@ -624,9 +624,9 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
                 tracao.style.translate = '0px 0px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 animacaoXzao()
                 adicionarClasse('X-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case 6:
                 tracao.style.rotate = '90deg'
@@ -634,9 +634,9 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
                 tracao.style.translate = '240px 360px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 animacaoXzao()
                 adicionarClasse('X-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case 7:
                 tracao.style.translate = '0px 350px'
@@ -644,9 +644,9 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
                 tracao.style.height = '20px'
                 tracao.style.animation = 'tracoDiagFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 animacaoXzao()
                 adicionarClasse('X-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case 8:
                 tracao.style.translate = '0px 350px'
@@ -654,36 +654,36 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
                 tracao.style.height = '20px'
                 tracao.style.animation = 'tracoDiagFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 animacaoXzao()
                 adicionarClasse('X-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case -1:
                 tracao.style.translate = '0px 110px'
                 tracao.style.height = '20px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 colocaOzao()
                 adicionarClasse('O-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case -2:
                 tracao.style.translate = '0px 350px'
                 tracao.style.height = '20px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 colocaOzao()
                 adicionarClasse('O-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case -3:
                 tracao.style.translate = '0px 590px'
                 tracao.style.height = '20px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 colocaOzao()
                 adicionarClasse('O-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case -4:
                 tracao.style.rotate = '90deg'
@@ -691,9 +691,9 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
                 tracao.style.translate = '-240px 0px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 colocaOzao()
                 adicionarClasse('O-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case -5:
                 tracao.style.rotate = '90deg'
@@ -701,9 +701,9 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
                 tracao.style.translate = '0px 0px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 colocaOzao()
                 adicionarClasse('O-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case -6:
                 tracao.style.rotate = '90deg'
@@ -711,9 +711,9 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
                 tracao.style.translate = '245px 350px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 colocaOzao()
                 adicionarClasse('O-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case -7:
                 tracao.style.translate = '0px 350px'
@@ -721,9 +721,9 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
                 tracao.style.height = '20px'
                 tracao.style.animation = 'tracoDiagFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 colocaOzao()
                 adicionarClasse('O-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case -8:
                 tracao.style.translate = '0px 350px'
@@ -731,9 +731,9 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
                 tracao.style.rotate = '-45deg'
                 tracao.style.animation = 'tracoDiagFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
-                bloqueiaFinal(subTabuleiros)
                 colocaOzao()
                 adicionarClasse('O-vitoria-final')(tabuleiroPrincipal)
+                bloqueiaFinal()
             break;
             case false:
                 tabuleirao.style.animation = 'velha 1s ease-out 9s forwards'
@@ -744,8 +744,8 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
     }
 }
 
-const bloqueiaFinal = (subTabs, index = 0) => {
-    const subTabAtual = subTabs[index]
+const bloqueiaFinal = (index = 0) => {
+    const subTabAtual = subTabuleiros[index]
     const bloqueioAtual = divsBloqueio[index];
     if (index === subTabs.length) return;
     else {
