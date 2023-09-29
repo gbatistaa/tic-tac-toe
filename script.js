@@ -493,50 +493,50 @@ const vitoriaFinal = (caixonas) => {
     const classeC7 = caixonas[6].classList[2];
     const classeC8 = caixonas[7].classList[2];
     const classeC9 = caixonas[8].classList[2];
-
-    if (classeC1 === classeC2 && classeC1 === classeC3) {
+    
+    if (classeC1 === classeC2 && classeC1 === classeC3 && classeC1 !== undefined) {
         if (classeC1 === 'X-vitoria') {
             return 1;
         } else if (classeC1 === 'O-vitoria') {
             return -1;
         }
-    } else if (classeC4 === classeC5 && classeC4 === classeC6) {
+    } else if (classeC4 === classeC5 && classeC4 === classeC6 && classeC4 !== undefined) {
         if (classeC4 === 'X-vitoria') {
             return 2;
         } else if (classeC4 === 'O-vitoria') {
             return -2;
         }
-    } else if (classeC7 === classeC8 && classeC7 === classeC9) {
+    } else if (classeC7 === classeC8 && classeC7 === classeC9 && classeC7 !== undefined) {
         if (classeC7 === 'X-vitoria') {
             return 3;
         } else if (classeC7 === 'O-vitoria') {
             return -3;
         }
-    } else if (classeC1 === classeC4 && classeC1 === classeC7) {
+    } else if (classeC1 === classeC4 && classeC1 === classeC7 && classeC1 !== undefined) {
         if (classeC1 === 'X-vitoria') {
             return 4;
         } else if (classeC1 === 'O-vitoria') {
             return -4;
         }
-    } else if (classeC2 === classeC5 && classeC2 === classeC8) {
+    } else if (classeC2 === classeC5 && classeC2 === classeC8 && classeC2 !== undefined) {
         if (classeC2 === 'X-vitoria') {
             return 5;
         } else if (classeC2 === 'O-vitoria') {
             return -5;
         }
-    } else if (classeC3 === classeC6 && classeC3 === classeC9) {
+    } else if (classeC3 === classeC6 && classeC3 === classeC9 && classeC3 !== undefined) {
         if (classeC3 === 'X-vitoria') {
             return 6;
         } else if (classeC3 === 'O-vitoria') {
             return -6;
         }
-    } else if (classeC1 === classeC5 && classeC1 === classeC9) {
+    } else if (classeC1 === classeC5 && classeC1 === classeC9 && classeC1 !== undefined) {
         if (classeC1 === 'X-vitoria') {
             return 7;
         } else if (classeC1 === 'O-vitoria') {
             return -7;
         }
-    } else if (classeC3 === classeC5 && classeC3 === classeC7) {
+    } else if (classeC3 === classeC5 && classeC3 === classeC7 && classeC3 !== undefined) {
         if (classeC3 === 'X-vitoria') {
             return 8;
         } else if (classeC3 === 'O-vitoria') {
@@ -607,7 +607,7 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
             case 4:
                 tracao.style.rotate = '90deg'
                 tracao.style.height = '20px'
-                tracao.style.translate = '-250px 0px'
+                tracao.style.translate = '-240px 360px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
                 animacaoXzao()
@@ -625,7 +625,7 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
             case 6:
                 tracao.style.rotate = '90deg'
                 tracao.style.height = '20px'
-                tracao.style.translate = '250px 0px'
+                tracao.style.translate = '240px 360px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
                 animacaoXzao()
@@ -676,7 +676,7 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
             case -4:
                 tracao.style.rotate = '90deg'
                 tracao.style.height = '20px'
-                tracao.style.translate = '-58px 0px'
+                tracao.style.translate = '-240px 0px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
                 colocaOzao()
@@ -694,14 +694,14 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
             case -6:
                 tracao.style.rotate = '90deg'
                 tracao.style.height = '20px'
-                tracao.style.translate = '250px 0px'
+                tracao.style.translate = '245px 350px'
                 tracao.style.animation = 'tracoHVFinal 5s ease-out 3s forwards'
                 tabuleirao.style.animation = 'someTab 1s ease-out 9s forwards'
                 colocaOzao()
                 adicionarClasse('O-vitoria-final')(tabuleiroPrincipal)
             break;
             case -7:
-                tracao.style.translate = '0px 340px'
+                tracao.style.translate = '0px 350px'
                 tracao.style.rotate = '45deg'
                 tracao.style.height = '20px'
                 tracao.style.animation = 'tracoDiagFinal 5s ease-out 3s forwards'
