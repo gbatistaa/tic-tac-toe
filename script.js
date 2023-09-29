@@ -563,10 +563,10 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
     const colocaOzao = () => {
         setTimeout(() => {
             const divContemBola = document.createElement('div')
-            adicionarClasse('circle-container')(divContemBola);
+            adicionarClasse('circle-container2')(divContemBola);
             
             const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            svg.classList.add('circulo');
+            svg.classList.add('circulao');
             
             const oAnima = document.createElementNS("http://www.w3.org/2000/svg", "circle");
             oAnima.setAttribute('cx', '50%');
