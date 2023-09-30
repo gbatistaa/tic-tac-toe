@@ -415,12 +415,12 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
     cursor: pointer;
 }
 
-.x-anima{
+/* .x-anima{
     width: 0px;
     height: 40px;
     background-color: #fd7c25;
     filter: brightness(1.5) drop-shadow(0 0 5px #fd7c25);
-}
+} */
 
 
 
@@ -429,41 +429,24 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
 @media screen and (max-width: 768px) { /*768 */
     
     #principal{
-        height: 42.9%;
-        width: 300px;
-        display: flex;
+        height: 375px;
+        width: 375px;
     }
 
     #tabuleiro-principal{
         height: 375px;
         width: 375px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
     }
 
     .caixa-grande {
         height: 125px;
         width: 125px;
         border: 2px solid #ffffff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 
     .bloqueada{
         height: 95px;
         width: 95px;
-        display: none;
-        position: absolute;
-        z-index: 6;
-        cursor: not-allowed;
-    }
-
-    .sub-tabuleiro{
-        height: fit-content;
-        width: fit-content;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
     }
 
     .caixa-pequena{
@@ -475,24 +458,20 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
     #botoes {
         position: absolute;
         display: grid;
-        top: 81%;
-        right: 25.5%;
+        top: 80%;
+        right: 31%;
     }
 
     #botao-instrucao {
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
         margin-bottom: 20px;
     }
 
     #logo{
         height: 200px;
         width: 250.56px;
-        position: absolute;
-        display: grid;
-        top: 5%;
-        left: 22.6%; 
+        top: 3%;
+        left: 22.6%;
+        z-index: -2;
     }
 
     :nth-child(1) ,:nth-child(2) ,:nth-child(3){
@@ -509,5 +488,42 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
     
     :nth-child(7) ,:nth-child(8) ,:nth-child(9){
         border-bottom: 0px;
+    }
+
+    .X:hover::before{
+        width: 25px;
+        height: 25px;
+    }
+
+    .x-simbolo {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .x-simbolo::before,
+    .x-simbolo::after {
+        width: 7px;
+        height: 29px;
+    }
+    
+    .O:hover::before{
+        width: 15px;
+        height: 15px;
+        border: 7px #25a8fd solid;
+    }
+
+    .o-simbolo{
+        width: 28px;
+        height: 28px;
+        border: 7px #25a8fd solid;
+    }
+
+    .botao{
+        width: 150px;
+        font-size: 20px;
+    }
+
+    .corte-vitoria{
+        height: 6px;
     }
 }
