@@ -427,20 +427,11 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
 
 
 @media screen and (max-width: 768px) { /*768 */
-    #logo{
-        height: 130px;
-        width: 155px;
-        position: absolute;
-        display: grid;
-        top: 20px;
-        left: 20px; 
-    }
     
     #principal{
-        height: 42.9;
+        height: 42.9%;
         width: 300px;
         display: flex;
-        justify-content: space-around;
     }
 
     #tabuleiro-principal{
@@ -484,23 +475,23 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
     #botoes {
         position: absolute;
         display: grid;
-        top: 78%;
-        right: 26%;
+        top: 81%;
+        right: 25.5%;
     }
 
     #botao-instrucao {
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
-    
+
     #logo{
         height: 200px;
         width: 250.56px;
         position: absolute;
         display: grid;
-        top: 7%;
+        top: 5%;
         left: 22.6%; 
     }
 
