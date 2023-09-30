@@ -463,24 +463,16 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
         position: absolute;
         display: grid;
         top: 75%;
-        right: 36.5%;
+        right: 14%;
         transform: translateX(-50%);
-        grid-template-columns: repeat(3, 1fr);
     }
 
     #botao-instrucao {
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        margin-bottom: 60px;
+        margin-bottom: 20px;
         margin-right: 40px;
-    }
-
-    #botao-reiniciar {
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        margin-bottom: 60px;
     }
 
     #logo{
