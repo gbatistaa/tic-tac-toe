@@ -21,8 +21,7 @@
 @keyframes someTab {
     from {opacity: 100%;}
     
-    to  {opacity: 0%;
-        }
+    to  {opacity: 0%;}
 }
 
 @keyframes velha {
@@ -69,7 +68,7 @@
     100% {
       stroke-dasharray: 722 722;
     }
-  }
+}
 
 @keyframes tracoHVFinal { 
     0% {width: 0px;}
@@ -525,5 +524,80 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
 
     .corte-vitoria{
         height: 6px;
+    }
+
+    @keyframes x {
+        from {
+            background-color: #fd7c25;
+            filter: brightness(1.5) drop-shadow(0 0 5px #fd7c25);
+            width: 0px;
+            height: 20px;
+        }
+        to  {
+            background-color: #fd7c25;
+            filter: brightness(1.5) drop-shadow(0 0 5px #fd7c25);
+            width: 120px;
+            height: 30px;
+        }
+    }
+
+    @keyframes o {
+        0% {
+          stroke-dasharray: 0 250;
+        }
+        100% {
+          stroke-dasharray: 250 250;
+        }
+    }
+
+    @keyframes tracoHorizVert {
+        0% {width: 0px;}
+    
+        40%  {width: 110px;}
+        
+        60%  {opacity: 100%;}
+        
+        100% {opacity: 25%;}
+    }
+
+    @keyframes tracoDiagonal {
+        0% {width: 0px;}
+        
+        40%  {width: 140px;}
+        
+        60%  {opacity: 100%;}
+        
+        100% {opacity: 25%;}
+    }
+
+    .circle-container {
+        width: 115px;
+        height: 115px;
+    }
+    
+    .circle-container2 {
+        width: 375px;
+        height: 375px;
+    }
+    
+    .circulo {
+        width: 100%;
+        height: 100%;
+        fill: transparent;
+        stroke: #0099ff;
+        stroke-width: 23px;
+        stroke-dasharray: 0 250;
+        animation: o 2s ease-out forwards;
+        filter: brightness(1.5) drop-shadow(0 0 5px #0099ff);
+    }
+
+    .circulao {
+        width: 100%;
+        height: 100%;
+        fill: transparent;
+        stroke: #0099ff;
+        stroke-width: 120px;
+        animation: oFinal 2s ease-out forwards;
+        filter: brightness(1.5) drop-shadow(0 0 5px #0099ff);
     }
 }
