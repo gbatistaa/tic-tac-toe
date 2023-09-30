@@ -249,7 +249,7 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
             const oAnima = document.createElementNS("http://www.w3.org/2000/svg", "circle");
             oAnima.setAttribute('cx', '50%');
             oAnima.setAttribute('cy', '50%');
-            oAnima.setAttribute('r', '78px');
+            oAnima.setAttribute('r', '32.5%');
             
             svg.appendChild(oAnima)
             divContemBola.appendChild(svg)
@@ -576,7 +576,7 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
             const oAnima = document.createElementNS("http://www.w3.org/2000/svg", "circle");
             oAnima.setAttribute('cx', '50%');
             oAnima.setAttribute('cy', '50%');
-            oAnima.setAttribute('r', '265px');
+            oAnima.setAttribute('r', '37.86%');
             
             svg.appendChild(oAnima)
             divContemBola.appendChild(svg)
