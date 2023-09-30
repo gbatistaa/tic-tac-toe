@@ -422,7 +422,11 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
     filter: brightness(1.5) drop-shadow(0 0 5px #fd7c25);
 }
 
-@media screen and (max-width: 768px) {
+
+
+
+
+@media screen and (max-width: 768px) { /*768 */
     #logo{
         height: 130px;
         width: 155px;
@@ -433,7 +437,7 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
     }
     
     #principal{
-        height: 300px;
+        height: 42.9;
         width: 300px;
         display: flex;
         justify-content: space-around;
@@ -449,7 +453,7 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
     .caixa-grande {
         height: 125px;
         width: 125px;
-        border: 5px solid #ffffff;
+        border: 2px solid #ffffff;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -475,5 +479,44 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
         height: 35px;
         width: 35px;
         border: 1px solid #ffffff;
+    }
+
+    #botoes {
+        position: absolute;
+        display: grid;
+        top: 78%;
+        right: 26%;
+    }
+
+    #botao-instrucao {
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 30px;
+    }
+    
+    #logo{
+        height: 200px;
+        width: 250.56px;
+        position: absolute;
+        display: grid;
+        top: 7%;
+        left: 22.6%; 
+    }
+
+    :nth-child(1) ,:nth-child(2) ,:nth-child(3){
+        border-top: 0px;
+    }
+    
+    :nth-child(1) ,:nth-child(4) ,:nth-child(7){
+        border-left: 0px;
+    }
+    
+    :nth-child(3) ,:nth-child(6) ,:nth-child(9){
+        border-right: 0px;
+    }
+    
+    :nth-child(7) ,:nth-child(8) ,:nth-child(9){
+        border-bottom: 0px;
     }
 }
