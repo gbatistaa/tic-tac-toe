@@ -21,7 +21,8 @@
 @keyframes someTab {
     from {opacity: 100%;}
     
-    to  {opacity: 0%;}
+    to  {opacity: 0%;
+        }
 }
 
 @keyframes velha {
@@ -68,7 +69,7 @@
     100% {
       stroke-dasharray: 722 722;
     }
-}
+  }
 
 @keyframes tracoHVFinal { 
     0% {width: 0px;}
@@ -414,12 +415,12 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
     cursor: pointer;
 }
 
-/* .x-anima{
+.x-anima{
     width: 0px;
     height: 40px;
     background-color: #fd7c25;
     filter: brightness(1.5) drop-shadow(0 0 5px #fd7c25);
-} */
+}
 
 
 
@@ -427,9 +428,6 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
 
 @media screen and (max-width: 768px) { /*768 */
     
-    *{
-        overflow: hidden;
-    }
 
     #principal{
         height: 375px;
@@ -462,7 +460,7 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
         width: 150px;
         position: absolute;
         display: grid;
-        top: 75%;
+        top: 82%;
         right: 14%;
         transform: translateX(-50%);
     }
