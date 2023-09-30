@@ -455,10 +455,12 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
     }
 
     #botoes {
+        width: 150px;
         position: absolute;
         display: grid;
         top: 80%;
-        right: 31%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     #botao-instrucao {
