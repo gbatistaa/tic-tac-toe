@@ -427,6 +427,10 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
 
 @media screen and (max-width: 768px) { /*768 */
     
+    *{
+        overflow: hidden;
+    }
+
     #principal{
         height: 375px;
         width: 375px;
@@ -458,13 +462,25 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
         width: 150px;
         position: absolute;
         display: grid;
-        top: 80%;
-        left: 50%;
+        top: 75%;
+        right: 36.5%;
         transform: translateX(-50%);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     #botao-instrucao {
-        margin-bottom: 20px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 60px;
+        margin-right: 40px;
+    }
+
+    #botao-reiniciar {
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 60px;
     }
 
     #logo{
