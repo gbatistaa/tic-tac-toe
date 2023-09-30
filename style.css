@@ -421,3 +421,59 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
     background-color: #fd7c25;
     filter: brightness(1.5) drop-shadow(0 0 5px #fd7c25);
 }
+
+@media screen and (max-width: 768px) {
+    #logo{
+        height: 130px;
+        width: 155px;
+        position: absolute;
+        display: grid;
+        top: 20px;
+        left: 20px; 
+    }
+    
+    #principal{
+        height: 300px;
+        width: 300px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    #tabuleiro-principal{
+        height: 375px;
+        width: 375px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .caixa-grande {
+        height: 125px;
+        width: 125px;
+        border: 5px solid #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bloqueada{
+        height: 95px;
+        width: 95px;
+        display: none;
+        position: absolute;
+        z-index: 6;
+        cursor: not-allowed;
+    }
+
+    .sub-tabuleiro{
+        height: fit-content;
+        width: fit-content;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .caixa-pequena{
+        height: 35px;
+        width: 35px;
+        border: 1px solid #ffffff;
+    }
+}
