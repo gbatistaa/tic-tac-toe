@@ -60,7 +60,7 @@ const mudaVezX = (objClasse, index = 0) => {
     if (index === objClasse.length) return true;
     else {
         removerClasse('X')(objClasse[index]);
-        if (objClasse[index].classList.contains('X-add') === false) {
+        if (objClasse[index].classList.contains('X-add') === false && objClasse[index].classList.contains('O-add') === false) {
             adicionarClasse('O')(objClasse[index]);
         }
         return mudaVezX(objClasse, index + 1)
@@ -72,7 +72,7 @@ const mudaVezO = (objClasse, index = 0) => {
     if (index === objClasse.length) return true;
     else {
         removerClasse('O')(objClasse[index]);
-        if (objClasse[index].classList.contains('O-add') === false) {
+        if (objClasse[index].classList.contains('O-add') === false && objClasse[index].classList.contains('X-add') === false) {
             adicionarClasse('X')(objClasse[index]);
         }
         return mudaVezO(objClasse, index + 1)
