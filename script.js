@@ -741,8 +741,11 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
                 bloqueiaFinal()
             break;
             case false:
-                tabuleirao.style.animation = 'velha 1s ease-out 9s forwards'
+                tabuleirao.style.animation = 'velha 2s ease-out 2.5s forwards'
                 tabuleirao.style.cursor = 'not-allowed'
+                setTimeout(() => {
+                    principal.innerHTML = "<div id='anima-velha'>:(</div>"
+                }, 4600)
                 adicionarClasse('velha-final')(tabuleiroPrincipal)
             break;
         }
