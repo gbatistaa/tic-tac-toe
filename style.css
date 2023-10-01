@@ -28,7 +28,7 @@
 @keyframes velha {
     from {opacity: 100%;}
     
-    to  {opacity: 20%;}
+    to  {opacity: 0%;}
 }
 
 @keyframes addBloq {
@@ -287,7 +287,6 @@ a{
     background-color: rgba(0,0,0,0.9);
     display: none;
     position: absolute;
-    z-index: 2;
     overflow-y: scroll;
     padding-bottom: 100px;
     z-index: 5;
@@ -423,8 +422,21 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
 }
 
 
+@keyframes animaVelha {
+    0% {font-size: 0px;}
+    
+    100%  {font-size: 640px;}
+}
 
 
+#anima-velha {
+    position: absolute;
+    font-size: xx-large;
+    font-weight: bolder;
+    color: #888888;
+    filter: brightness(1.5) drop-shadow(0 0 5px #888888);
+    animation: 'animaVelha 4s ease-out forwards';
+}
 
 @media screen and (max-width: 768px) { /*768 */
     
@@ -461,7 +473,7 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
         position: absolute;
         display: grid;
         top: 82%;
-        right: 14%;
+        left: 50%;
         transform: translateX(-50%);
     }
 
@@ -618,5 +630,15 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
 
     .circulao {
         stroke-width: 62px;
+    }
+
+    p {
+        font-size: 17px;
+        padding: 5px 0;
+        margin: 7% 10% 0 10%;
+    }
+
+    #info {
+        padding-bottom: 40px;
     }
 }
