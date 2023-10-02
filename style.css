@@ -440,7 +440,7 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
 
 @media screen and (max-width: 768px) { /*768 */
     
-    *{
+    * {
         overflow: hidden;
     }
 
@@ -490,9 +490,10 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
 
     #logo{
         height: 200px;
-        width: 250.56px;
+        width: 250.55px;
         top: 3%;
-        left: 22.6%;
+        left: 50%;
+        transform: translateX(-50%);
         z-index: -2;
     }
 
