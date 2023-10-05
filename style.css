@@ -1,11 +1,25 @@
-@keyframes tracoHorizVert {
+@keyframes tracoHoriz {
     0% {width: 0px;}
 
     40%  {width: 210px;}
     
     60%  {opacity: 100%;}
     
-    100% {opacity: 25%;}
+    99% {opacity: 25%;}
+
+    100% {opacity: 0%;}
+}
+
+@keyframes tracoVert {
+    0% {height: 0px;}
+
+    40%  {height: 210px;}
+    
+    60%  {opacity: 100%;}
+
+    99% {opacity: 25%;}
+    
+    100% {opacity: 0%;}
 }
 
 @keyframes tracoDiagonal {
@@ -15,7 +29,9 @@
     
     60%  {opacity: 100%;}
     
-    100% {opacity: 25%;}
+    99% {opacity: 25%;}
+    
+    100% {overflow: 0%;}
 }
 
 @keyframes someTab {
@@ -69,16 +85,30 @@
     100% {
       stroke-dasharray: 722 722;
     }
-  }
+}
 
-@keyframes tracoHVFinal { 
+@keyframes tracoHorizFinal { 
     0% {width: 0px;}
     
     40%  {width: 740px;}
     
     60%  {opacity: 100%;}
     
-    100% {opacity: 25%;}   
+    99% {opacity: 25%;}
+    
+    100% {opacity: 0%;}
+}
+
+@keyframes tracoVertFinal { 
+    0% {width: 0px;}
+    
+    40%  {width: 740px;}
+    
+    60%  {opacity: 100%;}
+    
+    99% {opacity: 25%;}
+    
+    100% {opacity: 0%;}
 }
   
 @keyframes tracoDiagFinal {
@@ -88,7 +118,9 @@
     
     60%  {opacity: 100%;}
     
-    100% {opacity: 25%;}
+    99% {opacity: 25%;}
+    
+    100% {opacity: 0%;}
 }
   
   
@@ -162,9 +194,10 @@
 }
 
 .corte-vitoria{
+    opacity: 0%;
     background-color: #11d368;
     height: 10px;
-    width: 0px;
+    width: 10px;
     position: absolute;
     z-index: 1;
     border-radius: 20px;
@@ -598,14 +631,28 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
         }
     }
 
-    @keyframes tracoHorizVert {
+    @keyframes tracoHoriz {
         0% {width: 0px;}
     
         40%  {width: 110px;}
         
         60%  {opacity: 100%;}
         
-        100% {opacity: 25%;}
+        99% {opacity: 25%;}
+    
+        100% {opacity: 0%;}
+    }
+
+    @keyframes tracoVert {
+        0% {height: 0px;}
+    
+        40%  {height: 110px;}
+        
+        60%  {opacity: 100%;}
+    
+        99% {opacity: 25%;}
+        
+        100% {opacity: 0%;}
     }
 
     @keyframes tracoDiagonal {
@@ -616,6 +663,42 @@ p:nth-child(6) {animation: animaRegras 3s ease-out 2.8s forwards;}
         60%  {opacity: 100%;}
         
         100% {opacity: 25%;}
+    }
+
+    @keyframes tracoHorizFinal { 
+        0% {width: 0px;}
+        
+        40%  {width: 375px;}
+        
+        60%  {opacity: 100%;}
+        
+        99% {opacity: 25%;}
+        
+        100% {opacity: 0%;}
+    }
+    
+    @keyframes tracoVertFinal { 
+        0% {width: 0px;}
+        
+        40%  {width: 375px;}
+        
+        60%  {opacity: 100%;}
+        
+        99% {opacity: 25%;}
+        
+        100% {opacity: 0%;}
+    }
+      
+    @keyframes tracoDiagFinal {
+        0% {width: 0px;}
+        
+        40%  {width: 530px;}
+        
+        60%  {opacity: 100%;}
+        
+        99% {opacity: 25%;}
+        
+        100% {opacity: 0%;}
     }
 
     .circle-container {
