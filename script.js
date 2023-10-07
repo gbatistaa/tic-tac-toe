@@ -218,6 +218,8 @@ const vitoriaParcial = (subTab) => {
 
 
 // Função que analisa qual tipo de vitória, e realiza a animação do traço
+// e a animação do X e O pequenos
+
 const tracoVitoria = (caixinha) => (tipoVitoria) => {
     const tabuleirinho = caixinha.parentElement;
     const caixaGrande = tabuleirinho.parentElement;
@@ -404,6 +406,7 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
 //     };
 // };
 
+//Função para liberar os subTabuleiros após uma jogada
 const liberaTabs = (subTabuleiros, index = 0) => {
     const tabAtual = subTabuleiros[index];
     const bloqueioAtual = divsBloqueio[index];
@@ -546,6 +549,9 @@ const vitoriaFinal = (caixonas) => {
     } else if (temSimboloFinal(caixonas) === 9) return false;
     else return null;
 };
+
+// Função que analisa qual tipo de vitória final, realiza a animação do traço
+// e a animação do X e O Grandes
 
 const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
     const tabuleirao = caixona.parentElement;
