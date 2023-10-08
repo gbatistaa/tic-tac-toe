@@ -1,9 +1,8 @@
 @keyframes tracoHoriz {
     0% {width: 0px;}
 
-    40%  {width: 210px;}
-    
-    60%  {opacity: 100%;}
+    40%  {width: 210px;
+          opacity: 100%;}
     
     99% {opacity: 25%;}
 
@@ -13,9 +12,8 @@
 @keyframes tracoVert {
     0% {height: 0px;}
 
-    40%  {height: 210px;}
-    
-    60%  {opacity: 100%;}
+    40%  {height: 210px;
+          opacity: 100%;}
 
     99% {opacity: 25%;}
     
@@ -25,9 +23,8 @@
 @keyframes tracoDiagonal {
     0% {width: 0px;}
     
-    40%  {width: 230px;}
-    
-    60%  {opacity: 100%;}
+    40%  {width: 230px;
+          opacity: 100%;}
     
     99% {opacity: 25%;}
     
@@ -44,7 +41,7 @@
 @keyframes velha {
     from {opacity: 100%;}
     
-    to  {opacity: 0%;}
+    to  {opacity: 20%;}
 }
 
 @keyframes addBloq {
