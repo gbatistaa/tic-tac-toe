@@ -34,7 +34,7 @@ const adicionarEvento = (caixaP, index = 0) => {
                 adicionarClasse('X-add')(caixinha);             //identifica um quadrante selecionado
                 // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
                 tracoVitoria(caixinha)(vitoriaParcial(subTab));
-                bloqueiaTab(caixinha);
+                //bloqueiaTab(caixinha);
                 //liberaTabs(caixasGrandes);                
 
             } else if (vez === 'O') {
@@ -46,7 +46,7 @@ const adicionarEvento = (caixaP, index = 0) => {
                 adicionarClasse('O-add')(caixinha);             // identifica um quadrante selecioando 
                 // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
                 tracoVitoria(caixinha)(vitoriaParcial(subTab))
-                bloqueiaTab(caixinha);
+                //bloqueiaTab(caixinha);
                 //liberaTabs(caixasGrandes)                        
             }
         });
@@ -218,8 +218,6 @@ const vitoriaParcial = (subTab) => {
 
 
 // Função que analisa qual tipo de vitória, e realiza a animação do traço
-// e a animação do X e O pequenos
-
 const tracoVitoria = (caixinha) => (tipoVitoria) => {
     const tabuleirinho = caixinha.parentElement;
     const caixaGrande = tabuleirinho.parentElement;
@@ -406,7 +404,7 @@ const tracoVitoria = (caixinha) => (tipoVitoria) => {
 //     };
 // };
 
-//Função para liberar os subTabuleiros após uma jogada
+//função recursiva para caso o subtabuleiro não possua vitoria(X ou O) ou empate(velha) retire o bloqueio de clique e aumente a opacidade
 const liberaTabs = (subTabuleiros, index = 0) => {
     const tabAtual = subTabuleiros[index];
     const bloqueioAtual = divsBloqueio[index];
@@ -421,7 +419,7 @@ const liberaTabs = (subTabuleiros, index = 0) => {
     };
 };
 
-
+//função recursiva para identificar qual a casa do subtabuleiro jogada e bloquear as demais casas nas suas respectivas maiores(tabuleiro normal)
 const bloqueiaTab = (caixinha, index = 0) => {
     const subTabClicado = caixinha.parentElement; // É o subtabuleiro da caixinha clicada, que acionou o evento de click
 
@@ -477,10 +475,10 @@ const bloqueiaTab = (caixinha, index = 0) => {
         return bloqueiaTab(caixinha, index + 1);
     };
 };
-const temSimboloFinal = (caixonas, index = 0, finalizadas = 0) => {
+const temSimboloFinal = (caixonas, index = 0) => {
     const caixonaAtual = caixonas[index]
     if (caixonaAtual.classList.contains('X-vitoria') || caixonaAtual.classList.contains('O-vitoria') || caixonaAtual.classList.contains('velha')) {
-        if (index === caixonas.length) return index
+        if (index === caixonas.length - 1) return true
         else return temSimboloFinal(caixonas, index + 1,);
     } else {
 
@@ -546,13 +544,11 @@ const vitoriaFinal = (caixonas) => {
         } else if (classeC3 === 'O-vitoria') {
             return -8;
         }
-    } else if (temSimboloFinal(caixonas) === 9) return false;
+    } else if (temSimboloFinal(caixonas) === true) return false;
     else return null;
 };
 
-// Função que analisa qual tipo de vitória final, realiza a animação do traço
-// e a animação do X e O Grandes
-
+//função que verifica qual foi o tipo de vitoria ou empate, utilizando os casos da função vitoriaFinal
 const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
     const tabuleirao = caixona.parentElement;
     const principal = tabuleirao.parentElement;
@@ -587,6 +583,8 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
             principal.appendChild(cloneBola)
         }, 9400)
     }
+
+    //antes de entrar no switch case, a função verifica se o jogo ja acabou ou se deu velha, e se o jogo não estiver mais acontecendo 
     if ((tipoVitoria < 9 || tipoVitoria === false) && tipoVitoria !== null) {
         tabuleiroPrincipal.style.cursor = 'not allowed';
         switch (tipoVitoria) {
@@ -747,11 +745,6 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
             case false:
                 tabuleirao.style.animation = 'velha 2s ease-out 2.5s forwards'
                 tabuleirao.style.cursor = 'not-allowed'
-                setTimeout(() => {
-                    principal.innerHTML = "<div id='anima-velha'>:(</div>"
-                }, 4600)
-                adicionarClasse('velha-final')(tabuleiroPrincipal)
-                break;
         }
     }
 }
