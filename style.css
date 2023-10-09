@@ -109,7 +109,7 @@
 @keyframes tracoDiagFinal {
     0% {width: 0px;}
     
-    40%  {width: 980px;
+    40%  {width: 960px;
          opacity: 100%;}
     
     99% {opacity: 25%;}
