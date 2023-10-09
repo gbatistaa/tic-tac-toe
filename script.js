@@ -34,9 +34,8 @@ const adicionarEvento = (caixaP, index = 0) => {
                 adicionarClasse('X-add')(caixinha);             //identifica um quadrante selecionado
                 // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
                 tracoVitoria(caixinha)(vitoriaParcial(subTab));
-                //bloqueiaTab(caixinha);
+                bloqueiaTab(caixinha);
                 //liberaTabs(caixasGrandes);                
-
             } else if (vez === 'O') {
                 const simboloClone = oSimbolo.cloneNode(true);
                 adicionarClasse('o-simbolo')(simboloClone);
@@ -46,7 +45,7 @@ const adicionarEvento = (caixaP, index = 0) => {
                 adicionarClasse('O-add')(caixinha);             // identifica um quadrante selecioando 
                 // verificação de vitória parcial, analizando as 8 combinações de vitória possíveis
                 tracoVitoria(caixinha)(vitoriaParcial(subTab))
-                //bloqueiaTab(caixinha);
+                bloqueiaTab(caixinha);
                 //liberaTabs(caixasGrandes)                        
             }
         });
@@ -80,7 +79,6 @@ const mudaVezO = (objClasse, index = 0) => {
 }
 
 // Função recursiva para transformar HTMLCollection (registro) em uma array de elementos da mesma classe HTML
-
 const criaArray = (classe, index = 0, array = []) => {
     const key = index.toString();
     if (index === classe.length) return array;
@@ -99,7 +97,6 @@ const adicionarClasse = (classe) => (elemento) => {
 const removerClasse = (classe) => (elemento) => {
     elemento.classList.remove(classe);
 }
-
 
 // "Ouve o evento click no botão de instrução"
 btInstrucao.addEventListener('click', () => {
@@ -120,7 +117,6 @@ btFechar.addEventListener('click', () => {
 
 // Função auxiliar para indentificar o empate, somente quando for garantida
 // que todas as caixinhas possuem simbolos dentro
-
 const temSimbolo = (objClasse, index = 0) => {
     const elementoAtual = objClasse[index]
     if (elementoAtual.innerHTML !== "") {
@@ -129,10 +125,7 @@ const temSimbolo = (objClasse, index = 0) => {
     }
 }
 
-
-// Função de estruturas condicionais para analisar qual tipo de vitória, entre as 8 combinações possíveis
-// Caso não bata com nenhuma das 8 e todos as caixinhas tenham simbolos a função irá retornar false, indicando velha (empate)
-
+// Essas duas constanstes criam a animação do X, cada uma cria um traço do X
 const xAnima1 = xSimbolo.cloneNode();
 xAnima1.style.rotate = '45deg'
 xAnima1.style.position = 'absolute'
@@ -144,6 +137,8 @@ xAnima2.style.position = 'absolute'
 xAnima2.style.zIndex = '3'
 xAnima2.style.height = '45px'
 
+// Função de estruturas condicionais para analisar qual tipo de vitória, entre as 8 combinações possíveis
+// Caso não bata com nenhuma das 8 e todos as caixinhas tenham simbolos a função irá retornar false, indicando velha (empate)
 const vitoriaParcial = (subTab) => {
     const caixinhas = subTab.children;
     const simbolos = {
@@ -475,6 +470,8 @@ const bloqueiaTab = (caixinha, index = 0) => {
         return bloqueiaTab(caixinha, index + 1);
     };
 };
+
+// Função auxiliar para indentificar o empate, muito parecida com a temSimbolo, porém ela identifica se tem um X, um O ou uma velha nas caixas grandes do tabuleiro principal
 const temSimboloFinal = (caixonas, index = 0) => {
     const caixonaAtual = caixonas[index]
     if (caixonaAtual.classList.contains('X-vitoria') || caixonaAtual.classList.contains('O-vitoria') || caixonaAtual.classList.contains('velha')) {
@@ -485,6 +482,8 @@ const temSimboloFinal = (caixonas, index = 0) => {
     }
 }
 
+// Função, muito parecida com a vitoriaParcial, para verificar qual tipo de vitória, entre as 8 combinações possíveis que podem ocorrer
+// porém caso não aconteça nenhuma das 8 combinações e todos as caixonas tenham simbolos ou empates a função irá retornar false, indicando um empate
 const vitoriaFinal = (caixonas) => {
     const classeC1 = caixonas[0].classList[2];
     const classeC2 = caixonas[1].classList[2];
@@ -749,6 +748,7 @@ const tracoVitoriaFinal = (caixona) => (tipoVitoria) => {
     }
 }
 
+// Função que bloqueia todos os tabuleiros menores depois que identifica a vitoria Final no tabuleiro maior 
 const bloqueiaFinal = (index = 0) => {
     console.log(index);
     const subTabAtual = subTabuleiros[index]
