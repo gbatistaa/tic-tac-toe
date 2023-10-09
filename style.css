@@ -87,9 +87,8 @@
 @keyframes tracoHorizFinal { 
     0% {width: 0px;}
     
-    40%  {width: 740px;}
-    
-    60%  {opacity: 100%;}
+    40%  {width: 740px;
+          opacity: 100%;}
     
     99% {opacity: 25%;}
     
@@ -99,9 +98,8 @@
 @keyframes tracoVertFinal { 
     0% {width: 0px;}
     
-    40%  {width: 740px;}
-    
-    60%  {opacity: 100%;}
+    40%  {width: 740px;
+          opacity: 100%;}
     
     99% {opacity: 25%;}
     
@@ -111,9 +109,8 @@
 @keyframes tracoDiagFinal {
     0% {width: 0px;}
     
-    40%  {width: 1000px;}
-    
-    60%  {opacity: 100%;}
+    40%  {width: 980px;
+         opacity: 100%;}
     
     99% {opacity: 25%;}
     
